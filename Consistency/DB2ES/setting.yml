@@ -1,0 +1,13 @@
+Database:
+  host: 10.231.9.224
+  port: 3306
+  user: order_platfor_w
+  password: 8FNOKVkKPcVJn6N_uky2Vct4NmOiEylF
+  database: order_platform
+
+
+ElasticSearch:
+  host: http://10.227.24.176
+  port: 9200
+  _index: kie
+  _id: order_id
