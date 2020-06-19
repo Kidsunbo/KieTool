@@ -2,6 +2,7 @@ import pymysql
 import yaml
 import tqdm
 import requests
+import datetime
 
 def get_setting():
     with open("setting.yml", 'r') as file:
@@ -31,7 +32,7 @@ def read_from_database(db_setting):
     with con.cursor() as cur:
         cur.execute("SELECT * FROM t_order_base")
         for row in cur.fetchall():
-            data.append({cur.description[i][0]: str(row[i]) for i in range(len(row))})
+            data.append({cur.description[i][0]: str(row[i]) if type(row[i]) in [datetime.datetime] else row[i] for i in range(len(row))})
     con.close()
     return data
 
