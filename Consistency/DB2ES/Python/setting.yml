@@ -7,7 +7,7 @@ Database:
       password: 8FNOKVkKPcVJn6N_uky2Vct4NmOiEylF
       database: order_platform
       table: t_order_base
-      #需要写入哪些字段，空为全部
+      #需要写入哪些字段，空为全部，若有值需要为数组，否则读取全部
       fields:
       #以哪一个字段为主健，重复的主键会被覆盖，推荐和_id相同
       key: order_id
@@ -26,12 +26,18 @@ Database:
       link: product_id
 
 
-ElasticSearch:
-  host: http://10.231.8.247
-  port: 21739
-  _index: temai_search_order_smart
-  _id: order_id
+#ElasticSearch:
+#  host: http://10.231.8.247
+#  port: 21739
+#  _index: temai_search_order_smart
+#  _id: order_id
 
+
+ElasticSearch:
+  host: http://10.227.24.176
+  port: 9200
+  _index: kie
+  _id: order_id
 
 Mapping:
   - name:product_name

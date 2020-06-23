@@ -28,6 +28,7 @@ def write_to_es(data,*,host="localhost",port=9200,_index="",_id=''):
 
 
 def read_from_database(db_setting):
+    print("reading database starts...")
     hosts = db_setting['hosts']
 
     if len(hosts)==0:
