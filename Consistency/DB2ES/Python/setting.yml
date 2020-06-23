@@ -1,13 +1,37 @@
 Database:
-  host: 10.231.9.224
-  port: 3306
-  user: order_platfor_w
-  password: 8FNOKVkKPcVJn6N_uky2Vct4NmOiEylF
-  database: order_platform
+  #写入数据库信息，第一个为主数据库，link以第一个为主来join
+  hosts:
+    - host: 10.231.9.224
+      port: 3306
+      user: order_platfor_w
+      password: 8FNOKVkKPcVJn6N_uky2Vct4NmOiEylF
+      database: order_platform
+      table: t_order_base
+      #需要写入哪些字段，空为全部
+      fields:
+      #以哪一个字段为主健，重复的主键会被覆盖，推荐和_id相同
+      key: order_id
+
+    - host: 10.231.9.248
+      port: 3306
+      user: smart_product_w
+      password: uIqVOtDwltI6Hd9_4u2ydLF3qcSanTNm
+      database: smart_productdb
+      table: t_product
+      fields:
+        - name
+      # 本数据库里的key，以它为主健取数据，如果重复会覆盖
+      key: product_id
+      # 连接主库的健
+      link: product_id
 
 
 ElasticSearch:
-  host: http://10.227.24.176
-  port: 9200
-  _index: kie
+  host: http://10.231.8.247
+  port: 21739
+  _index: temai_search_order_smart
   _id: order_id
+
+
+Mapping:
+  - name:product_name
