@@ -1,4 +1,4 @@
-# KieTool_DB2ES
+# DB2ES
 
 > The little program that keep elastic search be consistent with database.
 
