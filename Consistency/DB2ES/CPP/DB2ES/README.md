@@ -1,17 +1,21 @@
 # DB2ES
-
-> The little program that keep elastic search be consistent with database.
+> C++ version of DB2ES
 
 
 ## Introduction
 When I developed one project, some bugs always appeared oddly. After times of appearing, I found that it was due to some
 data was lost in ES while database had the latest version of data. I developed a Python script to solve it, and it was great.
 
-Now I rewrite the whole thing in C++ and wrap it to a REST API service. Here we are.
+Now I rewrite the whole thing in C++ and wrap it to a RPC service. Here we are.
 
 ## Usage
 
-I will create a website, and all the direction would be there if everything goes as I planed.
+There are two functions, `sync` is mainly used to synchronize the database and elastic search, while `info` is used to check 
+how many rows has been handled. For detail, check the signature of the functions.
+
+
+## Use Port
+- 12139
 
 ## Third Libraries
 
