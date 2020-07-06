@@ -1,0 +1,3 @@
+[submodule "Consistency/DB2ES/CPP/DB2ES/lib/elasticlient"]
+	path = Consistency/DB2ES/CPP/DB2ES/lib/elasticlient
+	url = https://github.com/seznam/elasticlient.git
