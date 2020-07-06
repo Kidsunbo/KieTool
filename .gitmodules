@@ -1,3 +1,6 @@
 [submodule "Consistency/DB2ES/CPP/DB2ES/lib/elasticlient"]
 	path = Consistency/DB2ES/CPP/DB2ES/lib/elasticlient
 	url = https://github.com/seznam/elasticlient.git
+[submodule "Consistency/DB2ES/CPP/DB2ES/lib/spdlog"]
+	path = Consistency/DB2ES/CPP/DB2ES/lib/spdlog
+	url = https://github.com/gabime/spdlog.git
