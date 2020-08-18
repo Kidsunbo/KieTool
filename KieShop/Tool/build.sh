@@ -4,4 +4,6 @@ fi
 cd release &&
 cmake -DCMAKE_BUILD_TYPE=Release .. &&
 make &&
-./Tool
+rm -rf logs &&
+mkdir logs&&
+nohup Tool >> logs/logs.txt
