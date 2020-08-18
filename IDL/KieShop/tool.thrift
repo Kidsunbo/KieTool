@@ -6,10 +6,7 @@ namespace py KieShop.tool
 include "../base.thrift"
 
 struct ShardingKeyRequest{
-  1: string orderId
-  2: optional bool isOrderId
-  3: optional bool isShopId
-  4: optional bool isUserId
+  1: string id
 
   255: base.Base base
 }
