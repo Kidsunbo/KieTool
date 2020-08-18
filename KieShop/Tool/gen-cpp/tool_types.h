@@ -24,14 +24,13 @@ namespace KieShop { namespace tool {
 
 class ShardingKeyRequest;
 
+class ShardingKeyItem;
+
 class ShardingKeyResponse;
 
 typedef struct _ShardingKeyRequest__isset {
-  _ShardingKeyRequest__isset() : orderId(false), isOrderId(false), isShopId(false), isUserId(false), base(false) {}
-  bool orderId :1;
-  bool isOrderId :1;
-  bool isShopId :1;
-  bool isUserId :1;
+  _ShardingKeyRequest__isset() : id(false), base(false) {}
+  bool id :1;
   bool base :1;
 } _ShardingKeyRequest__isset;
 
@@ -40,43 +39,22 @@ class ShardingKeyRequest : public virtual ::apache::thrift::TBase {
 
   ShardingKeyRequest(const ShardingKeyRequest&);
   ShardingKeyRequest& operator=(const ShardingKeyRequest&);
-  ShardingKeyRequest() : orderId(), isOrderId(0), isShopId(0), isUserId(0) {
+  ShardingKeyRequest() : id() {
   }
 
   virtual ~ShardingKeyRequest() noexcept;
-  std::string orderId;
-  bool isOrderId;
-  bool isShopId;
-  bool isUserId;
+  std::string id;
    ::base::Base base;
 
   _ShardingKeyRequest__isset __isset;
 
-  void __set_orderId(const std::string& val);
-
-  void __set_isOrderId(const bool val);
-
-  void __set_isShopId(const bool val);
-
-  void __set_isUserId(const bool val);
+  void __set_id(const std::string& val);
 
   void __set_base(const  ::base::Base& val);
 
   bool operator == (const ShardingKeyRequest & rhs) const
   {
-    if (!(orderId == rhs.orderId))
-      return false;
-    if (__isset.isOrderId != rhs.__isset.isOrderId)
-      return false;
-    else if (__isset.isOrderId && !(isOrderId == rhs.isOrderId))
-      return false;
-    if (__isset.isShopId != rhs.__isset.isShopId)
-      return false;
-    else if (__isset.isShopId && !(isShopId == rhs.isShopId))
-      return false;
-    if (__isset.isUserId != rhs.__isset.isUserId)
-      return false;
-    else if (__isset.isUserId && !(isUserId == rhs.isUserId))
+    if (!(id == rhs.id))
       return false;
     if (!(base == rhs.base))
       return false;
@@ -98,33 +76,31 @@ void swap(ShardingKeyRequest &a, ShardingKeyRequest &b);
 
 std::ostream& operator<<(std::ostream& out, const ShardingKeyRequest& obj);
 
-typedef struct _ShardingKeyResponse__isset {
-  _ShardingKeyResponse__isset() : shardingKey(false), isNew(false), serverId(false), timestamp(false), counter(false), baseResp(false) {}
+typedef struct _ShardingKeyItem__isset {
+  _ShardingKeyItem__isset() : shardingKey(false), isNew(false), serverId(false), timestamp(false), counter(false) {}
   bool shardingKey :1;
   bool isNew :1;
   bool serverId :1;
   bool timestamp :1;
   bool counter :1;
-  bool baseResp :1;
-} _ShardingKeyResponse__isset;
+} _ShardingKeyItem__isset;
 
-class ShardingKeyResponse : public virtual ::apache::thrift::TBase {
+class ShardingKeyItem : public virtual ::apache::thrift::TBase {
  public:
 
-  ShardingKeyResponse(const ShardingKeyResponse&);
-  ShardingKeyResponse& operator=(const ShardingKeyResponse&);
-  ShardingKeyResponse() : shardingKey(0), isNew(0), serverId(0), timestamp(0), counter(0) {
+  ShardingKeyItem(const ShardingKeyItem&);
+  ShardingKeyItem& operator=(const ShardingKeyItem&);
+  ShardingKeyItem() : shardingKey(0), isNew(0), serverId(0), timestamp(0), counter(0) {
   }
 
-  virtual ~ShardingKeyResponse() noexcept;
+  virtual ~ShardingKeyItem() noexcept;
   int32_t shardingKey;
   bool isNew;
   int32_t serverId;
   int32_t timestamp;
   int32_t counter;
-   ::base::BaseResp baseResp;
 
-  _ShardingKeyResponse__isset __isset;
+  _ShardingKeyItem__isset __isset;
 
   void __set_shardingKey(const int32_t val);
 
@@ -136,9 +112,7 @@ class ShardingKeyResponse : public virtual ::apache::thrift::TBase {
 
   void __set_counter(const int32_t val);
 
-  void __set_baseResp(const  ::base::BaseResp& val);
-
-  bool operator == (const ShardingKeyResponse & rhs) const
+  bool operator == (const ShardingKeyItem & rhs) const
   {
     if (!(shardingKey == rhs.shardingKey))
       return false;
@@ -149,6 +123,64 @@ class ShardingKeyResponse : public virtual ::apache::thrift::TBase {
     if (!(timestamp == rhs.timestamp))
       return false;
     if (!(counter == rhs.counter))
+      return false;
+    return true;
+  }
+  bool operator != (const ShardingKeyItem &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ShardingKeyItem & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ShardingKeyItem &a, ShardingKeyItem &b);
+
+std::ostream& operator<<(std::ostream& out, const ShardingKeyItem& obj);
+
+typedef struct _ShardingKeyResponse__isset {
+  _ShardingKeyResponse__isset() : orderId(false), userId(false), shopId(false), baseResp(false) {}
+  bool orderId :1;
+  bool userId :1;
+  bool shopId :1;
+  bool baseResp :1;
+} _ShardingKeyResponse__isset;
+
+class ShardingKeyResponse : public virtual ::apache::thrift::TBase {
+ public:
+
+  ShardingKeyResponse(const ShardingKeyResponse&);
+  ShardingKeyResponse& operator=(const ShardingKeyResponse&);
+  ShardingKeyResponse() {
+  }
+
+  virtual ~ShardingKeyResponse() noexcept;
+  ShardingKeyItem orderId;
+  ShardingKeyItem userId;
+  ShardingKeyItem shopId;
+   ::base::BaseResp baseResp;
+
+  _ShardingKeyResponse__isset __isset;
+
+  void __set_orderId(const ShardingKeyItem& val);
+
+  void __set_userId(const ShardingKeyItem& val);
+
+  void __set_shopId(const ShardingKeyItem& val);
+
+  void __set_baseResp(const  ::base::BaseResp& val);
+
+  bool operator == (const ShardingKeyResponse & rhs) const
+  {
+    if (!(orderId == rhs.orderId))
+      return false;
+    if (!(userId == rhs.userId))
+      return false;
+    if (!(shopId == rhs.shopId))
       return false;
     if (!(baseResp == rhs.baseResp))
       return false;

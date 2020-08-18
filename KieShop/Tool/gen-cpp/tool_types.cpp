@@ -18,23 +18,8 @@ ShardingKeyRequest::~ShardingKeyRequest() noexcept {
 }
 
 
-void ShardingKeyRequest::__set_orderId(const std::string& val) {
-  this->orderId = val;
-}
-
-void ShardingKeyRequest::__set_isOrderId(const bool val) {
-  this->isOrderId = val;
-__isset.isOrderId = true;
-}
-
-void ShardingKeyRequest::__set_isShopId(const bool val) {
-  this->isShopId = val;
-__isset.isShopId = true;
-}
-
-void ShardingKeyRequest::__set_isUserId(const bool val) {
-  this->isUserId = val;
-__isset.isUserId = true;
+void ShardingKeyRequest::__set_id(const std::string& val) {
+  this->id = val;
 }
 
 void ShardingKeyRequest::__set_base(const  ::base::Base& val) {
@@ -70,32 +55,8 @@ uint32_t ShardingKeyRequest::read(::apache::thrift::protocol::TProtocol* iprot) 
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->orderId);
-          this->__isset.orderId = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_BOOL) {
-          xfer += iprot->readBool(this->isOrderId);
-          this->__isset.isOrderId = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_BOOL) {
-          xfer += iprot->readBool(this->isShopId);
-          this->__isset.isShopId = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_BOOL) {
-          xfer += iprot->readBool(this->isUserId);
-          this->__isset.isUserId = true;
+          xfer += iprot->readString(this->id);
+          this->__isset.id = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -125,25 +86,10 @@ uint32_t ShardingKeyRequest::write(::apache::thrift::protocol::TProtocol* oprot)
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("ShardingKeyRequest");
 
-  xfer += oprot->writeFieldBegin("orderId", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->orderId);
+  xfer += oprot->writeFieldBegin("id", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->id);
   xfer += oprot->writeFieldEnd();
 
-  if (this->__isset.isOrderId) {
-    xfer += oprot->writeFieldBegin("isOrderId", ::apache::thrift::protocol::T_BOOL, 2);
-    xfer += oprot->writeBool(this->isOrderId);
-    xfer += oprot->writeFieldEnd();
-  }
-  if (this->__isset.isShopId) {
-    xfer += oprot->writeFieldBegin("isShopId", ::apache::thrift::protocol::T_BOOL, 3);
-    xfer += oprot->writeBool(this->isShopId);
-    xfer += oprot->writeFieldEnd();
-  }
-  if (this->__isset.isUserId) {
-    xfer += oprot->writeFieldBegin("isUserId", ::apache::thrift::protocol::T_BOOL, 4);
-    xfer += oprot->writeBool(this->isUserId);
-    xfer += oprot->writeFieldEnd();
-  }
   xfer += oprot->writeFieldBegin("base", ::apache::thrift::protocol::T_STRUCT, 255);
   xfer += this->base.write(oprot);
   xfer += oprot->writeFieldEnd();
@@ -155,27 +101,18 @@ uint32_t ShardingKeyRequest::write(::apache::thrift::protocol::TProtocol* oprot)
 
 void swap(ShardingKeyRequest &a, ShardingKeyRequest &b) {
   using ::std::swap;
-  swap(a.orderId, b.orderId);
-  swap(a.isOrderId, b.isOrderId);
-  swap(a.isShopId, b.isShopId);
-  swap(a.isUserId, b.isUserId);
+  swap(a.id, b.id);
   swap(a.base, b.base);
   swap(a.__isset, b.__isset);
 }
 
 ShardingKeyRequest::ShardingKeyRequest(const ShardingKeyRequest& other0) {
-  orderId = other0.orderId;
-  isOrderId = other0.isOrderId;
-  isShopId = other0.isShopId;
-  isUserId = other0.isUserId;
+  id = other0.id;
   base = other0.base;
   __isset = other0.__isset;
 }
 ShardingKeyRequest& ShardingKeyRequest::operator=(const ShardingKeyRequest& other1) {
-  orderId = other1.orderId;
-  isOrderId = other1.isOrderId;
-  isShopId = other1.isShopId;
-  isUserId = other1.isUserId;
+  id = other1.id;
   base = other1.base;
   __isset = other1.__isset;
   return *this;
@@ -183,50 +120,43 @@ ShardingKeyRequest& ShardingKeyRequest::operator=(const ShardingKeyRequest& othe
 void ShardingKeyRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "ShardingKeyRequest(";
-  out << "orderId=" << to_string(orderId);
-  out << ", " << "isOrderId="; (__isset.isOrderId ? (out << to_string(isOrderId)) : (out << "<null>"));
-  out << ", " << "isShopId="; (__isset.isShopId ? (out << to_string(isShopId)) : (out << "<null>"));
-  out << ", " << "isUserId="; (__isset.isUserId ? (out << to_string(isUserId)) : (out << "<null>"));
+  out << "id=" << to_string(id);
   out << ", " << "base=" << to_string(base);
   out << ")";
 }
 
 
-ShardingKeyResponse::~ShardingKeyResponse() noexcept {
+ShardingKeyItem::~ShardingKeyItem() noexcept {
 }
 
 
-void ShardingKeyResponse::__set_shardingKey(const int32_t val) {
+void ShardingKeyItem::__set_shardingKey(const int32_t val) {
   this->shardingKey = val;
 }
 
-void ShardingKeyResponse::__set_isNew(const bool val) {
+void ShardingKeyItem::__set_isNew(const bool val) {
   this->isNew = val;
 }
 
-void ShardingKeyResponse::__set_serverId(const int32_t val) {
+void ShardingKeyItem::__set_serverId(const int32_t val) {
   this->serverId = val;
 }
 
-void ShardingKeyResponse::__set_timestamp(const int32_t val) {
+void ShardingKeyItem::__set_timestamp(const int32_t val) {
   this->timestamp = val;
 }
 
-void ShardingKeyResponse::__set_counter(const int32_t val) {
+void ShardingKeyItem::__set_counter(const int32_t val) {
   this->counter = val;
 }
-
-void ShardingKeyResponse::__set_baseResp(const  ::base::BaseResp& val) {
-  this->baseResp = val;
-}
-std::ostream& operator<<(std::ostream& out, const ShardingKeyResponse& obj)
+std::ostream& operator<<(std::ostream& out, const ShardingKeyItem& obj)
 {
   obj.printTo(out);
   return out;
 }
 
 
-uint32_t ShardingKeyResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ShardingKeyItem::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -287,6 +217,158 @@ uint32_t ShardingKeyResponse::read(::apache::thrift::protocol::TProtocol* iprot)
           xfer += iprot->skip(ftype);
         }
         break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ShardingKeyItem::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ShardingKeyItem");
+
+  xfer += oprot->writeFieldBegin("shardingKey", ::apache::thrift::protocol::T_I32, 1);
+  xfer += oprot->writeI32(this->shardingKey);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("isNew", ::apache::thrift::protocol::T_BOOL, 2);
+  xfer += oprot->writeBool(this->isNew);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("serverId", ::apache::thrift::protocol::T_I32, 3);
+  xfer += oprot->writeI32(this->serverId);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("timestamp", ::apache::thrift::protocol::T_I32, 4);
+  xfer += oprot->writeI32(this->timestamp);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("counter", ::apache::thrift::protocol::T_I32, 5);
+  xfer += oprot->writeI32(this->counter);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ShardingKeyItem &a, ShardingKeyItem &b) {
+  using ::std::swap;
+  swap(a.shardingKey, b.shardingKey);
+  swap(a.isNew, b.isNew);
+  swap(a.serverId, b.serverId);
+  swap(a.timestamp, b.timestamp);
+  swap(a.counter, b.counter);
+  swap(a.__isset, b.__isset);
+}
+
+ShardingKeyItem::ShardingKeyItem(const ShardingKeyItem& other2) {
+  shardingKey = other2.shardingKey;
+  isNew = other2.isNew;
+  serverId = other2.serverId;
+  timestamp = other2.timestamp;
+  counter = other2.counter;
+  __isset = other2.__isset;
+}
+ShardingKeyItem& ShardingKeyItem::operator=(const ShardingKeyItem& other3) {
+  shardingKey = other3.shardingKey;
+  isNew = other3.isNew;
+  serverId = other3.serverId;
+  timestamp = other3.timestamp;
+  counter = other3.counter;
+  __isset = other3.__isset;
+  return *this;
+}
+void ShardingKeyItem::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "ShardingKeyItem(";
+  out << "shardingKey=" << to_string(shardingKey);
+  out << ", " << "isNew=" << to_string(isNew);
+  out << ", " << "serverId=" << to_string(serverId);
+  out << ", " << "timestamp=" << to_string(timestamp);
+  out << ", " << "counter=" << to_string(counter);
+  out << ")";
+}
+
+
+ShardingKeyResponse::~ShardingKeyResponse() noexcept {
+}
+
+
+void ShardingKeyResponse::__set_orderId(const ShardingKeyItem& val) {
+  this->orderId = val;
+}
+
+void ShardingKeyResponse::__set_userId(const ShardingKeyItem& val) {
+  this->userId = val;
+}
+
+void ShardingKeyResponse::__set_shopId(const ShardingKeyItem& val) {
+  this->shopId = val;
+}
+
+void ShardingKeyResponse::__set_baseResp(const  ::base::BaseResp& val) {
+  this->baseResp = val;
+}
+std::ostream& operator<<(std::ostream& out, const ShardingKeyResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+uint32_t ShardingKeyResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->orderId.read(iprot);
+          this->__isset.orderId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->userId.read(iprot);
+          this->__isset.userId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->shopId.read(iprot);
+          this->__isset.shopId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       case 255:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->baseResp.read(iprot);
@@ -312,24 +394,16 @@ uint32_t ShardingKeyResponse::write(::apache::thrift::protocol::TProtocol* oprot
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("ShardingKeyResponse");
 
-  xfer += oprot->writeFieldBegin("shardingKey", ::apache::thrift::protocol::T_I32, 1);
-  xfer += oprot->writeI32(this->shardingKey);
+  xfer += oprot->writeFieldBegin("orderId", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->orderId.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("isNew", ::apache::thrift::protocol::T_BOOL, 2);
-  xfer += oprot->writeBool(this->isNew);
+  xfer += oprot->writeFieldBegin("userId", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->userId.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("serverId", ::apache::thrift::protocol::T_I32, 3);
-  xfer += oprot->writeI32(this->serverId);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("timestamp", ::apache::thrift::protocol::T_I32, 4);
-  xfer += oprot->writeI32(this->timestamp);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("counter", ::apache::thrift::protocol::T_I32, 5);
-  xfer += oprot->writeI32(this->counter);
+  xfer += oprot->writeFieldBegin("shopId", ::apache::thrift::protocol::T_STRUCT, 3);
+  xfer += this->shopId.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("baseResp", ::apache::thrift::protocol::T_STRUCT, 255);
@@ -343,42 +417,34 @@ uint32_t ShardingKeyResponse::write(::apache::thrift::protocol::TProtocol* oprot
 
 void swap(ShardingKeyResponse &a, ShardingKeyResponse &b) {
   using ::std::swap;
-  swap(a.shardingKey, b.shardingKey);
-  swap(a.isNew, b.isNew);
-  swap(a.serverId, b.serverId);
-  swap(a.timestamp, b.timestamp);
-  swap(a.counter, b.counter);
+  swap(a.orderId, b.orderId);
+  swap(a.userId, b.userId);
+  swap(a.shopId, b.shopId);
   swap(a.baseResp, b.baseResp);
   swap(a.__isset, b.__isset);
 }
 
-ShardingKeyResponse::ShardingKeyResponse(const ShardingKeyResponse& other2) {
-  shardingKey = other2.shardingKey;
-  isNew = other2.isNew;
-  serverId = other2.serverId;
-  timestamp = other2.timestamp;
-  counter = other2.counter;
-  baseResp = other2.baseResp;
-  __isset = other2.__isset;
+ShardingKeyResponse::ShardingKeyResponse(const ShardingKeyResponse& other4) {
+  orderId = other4.orderId;
+  userId = other4.userId;
+  shopId = other4.shopId;
+  baseResp = other4.baseResp;
+  __isset = other4.__isset;
 }
-ShardingKeyResponse& ShardingKeyResponse::operator=(const ShardingKeyResponse& other3) {
-  shardingKey = other3.shardingKey;
-  isNew = other3.isNew;
-  serverId = other3.serverId;
-  timestamp = other3.timestamp;
-  counter = other3.counter;
-  baseResp = other3.baseResp;
-  __isset = other3.__isset;
+ShardingKeyResponse& ShardingKeyResponse::operator=(const ShardingKeyResponse& other5) {
+  orderId = other5.orderId;
+  userId = other5.userId;
+  shopId = other5.shopId;
+  baseResp = other5.baseResp;
+  __isset = other5.__isset;
   return *this;
 }
 void ShardingKeyResponse::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "ShardingKeyResponse(";
-  out << "shardingKey=" << to_string(shardingKey);
-  out << ", " << "isNew=" << to_string(isNew);
-  out << ", " << "serverId=" << to_string(serverId);
-  out << ", " << "timestamp=" << to_string(timestamp);
-  out << ", " << "counter=" << to_string(counter);
+  out << "orderId=" << to_string(orderId);
+  out << ", " << "userId=" << to_string(userId);
+  out << ", " << "shopId=" << to_string(shopId);
   out << ", " << "baseResp=" << to_string(baseResp);
   out << ")";
 }

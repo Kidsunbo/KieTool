@@ -25,29 +25,18 @@ auto parseOrderId(int64 order_id)->unique_ptr<OrderId>{
 ShardingKeyResponse getShardingKey(const ShardingKeyRequest& sk){
     ShardingKeyResponse resp;
     try {
-        if (sk.__isset.isOrderId || sk.__isset.isShopId || sk.__isset.isUserId) {
-            if (sk.isOrderId) {
-                auto order_id = std::stoll(sk.orderId);
-                auto o = parseOrderId(order_id);
-                resp.shardingKey = o->shard_key;
-                resp.counter=o->counter;
-                resp.timestamp=o->timestamp;
-                resp.serverId=o->server_id;
-                resp.isNew=o->is_new;
-            }else if(sk.isShopId){
+        //Order Id
+        auto order_id = std::stoll(sk.id);
+        auto o = parseOrderId(order_id);
+        resp.orderId.shardingKey = o->shard_key;
+        resp.orderId.counter=o->counter;
+        resp.orderId.timestamp=o->timestamp;
+        resp.orderId.serverId=o->server_id;
+        resp.orderId.isNew=o->is_new;
 
-            }else if(sk.isUserId){
+        //TODO Shop Id
 
-            }
-        }else{
-            auto order_id = std::stoll(sk.orderId);
-            auto o = parseOrderId(order_id);
-            resp.shardingKey = o->shard_key;
-            resp.counter=o->counter;
-            resp.timestamp=o->timestamp;
-            resp.serverId=o->server_id;
-            resp.isNew=o->is_new;
-        }
+        //TODO User Id
     } catch (std::exception& e) {
         resp.baseResp.statusCode=base::StatusCode::Fail;
         resp.baseResp.statusMessage=e.what();
