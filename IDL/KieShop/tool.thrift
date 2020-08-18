@@ -23,3 +23,7 @@ struct ShardingKeyResponse{
 
   255: base.BaseResp baseResp
 }
+
+service ToolService{
+   ShardingKeyResponse getShardingKey(1: ShardingKeyRequest sk)
+}

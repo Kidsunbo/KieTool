@@ -28,6 +28,6 @@ struct Base {
 **/
 struct BaseResp{
    1: StatusCode statusCode=0                  //The status code that represent the result
-   2: string StatusMessage = ""                //The message of the error
+   2: string statusMessage = ""                //The message of the error
    3: optional map<string,string> data         //Store the extra data if needed
 }
