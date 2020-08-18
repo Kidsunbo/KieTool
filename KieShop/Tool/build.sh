@@ -1,5 +1,5 @@
 if [ ! -d "release" ]; then
-mkdir release &&
+mkdir release
 fi
 cd release &&
 cmake -DCMAKE_BUILD_TYPE=Release .. &&
