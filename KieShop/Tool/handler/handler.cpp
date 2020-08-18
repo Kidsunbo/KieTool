@@ -34,7 +34,19 @@ ShardingKeyResponse getShardingKey(const ShardingKeyRequest& sk){
                 resp.timestamp=o->timestamp;
                 resp.serverId=o->server_id;
                 resp.isNew=o->is_new;
+            }else if(sk.isShopId){
+
+            }else if(sk.isUserId){
+
             }
+        }else{
+            auto order_id = std::stoll(sk.orderId);
+            auto o = parseOrderId(order_id);
+            resp.shardingKey = o->shard_key;
+            resp.counter=o->counter;
+            resp.timestamp=o->timestamp;
+            resp.serverId=o->server_id;
+            resp.isNew=o->is_new;
         }
     } catch (std::exception& e) {
         resp.baseResp.statusCode=base::StatusCode::Fail;
