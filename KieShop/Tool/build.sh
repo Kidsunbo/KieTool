@@ -1,4 +1,4 @@
-if [! -d "release"]; then
+if [ ! -d "release" ]; then
 mkdir release &&
 fi
 cd release &&
