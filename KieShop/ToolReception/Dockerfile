@@ -1,0 +1,13 @@
+FROM ubuntu:latest
+
+RUN apt update && apt install -y g++ cmake libboost-dev libthrift-0.13.0 git
+
+WORKDIR /root
+
+RUN git clone https://github.com/Kidsunbo/KieTool.git && cd KieTool/KieShop/ToolReception && git submodule update --init --recursive
+
+WORKDIR /root/KieTool/KieShop/ToolReception
+
+ENTRYPOINT ["sh"]
+
+CMD ["build.sh"]

@@ -6,4 +6,4 @@ cmake -DCMAKE_BUILD_TYPE=Release .. &&
 make &&
 rm -rf logs &&
 mkdir logs&&
-nohup ./Tool >> logs/logs.txt &
+./Tool >> logs/logs.txt &
