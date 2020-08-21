@@ -5,6 +5,7 @@
 #include "handler.h"
 #include "../client/tool_client.h"
 #include <nlohmann/json.hpp>
+#include <fmt/format.h>
 
 namespace handler {
 
@@ -23,6 +24,7 @@ namespace handler {
         j["order_id_sharding_key"]=response.orderId.shardingKey;
         j["shop_id_sharding_key"]=response.shopId.shardingKey;
         j["user_id_sharding_key"]=response.userId.shardingKey;
+        j["select_order_id"]=fmt::format("SELECT * FROM t_order_base WHERE order_id={} and sharding_key={} LIMIT 1",id,response.orderId.shardingKey);
         resp.set_status_and_content(cinatra::status_type::ok,j.dump(),cinatra::req_content_type::json);
     }
 

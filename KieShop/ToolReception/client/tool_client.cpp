@@ -19,7 +19,7 @@ using namespace apache::thrift::transport;
 KieShop::tool::ToolServiceClient toolServiceClient(nullptr);
 
 static void init(){
-    std::shared_ptr<TTransport> socket(new TSocket("10.227.24.176", 9090));
+    std::shared_ptr<TTransport> socket(new TSocket("localhost", 9090));
     std::shared_ptr<TTransport> transport(new TBufferedTransport(socket));
     std::shared_ptr<TProtocol> protocol(new TBinaryProtocol(transport));
     transport->open();

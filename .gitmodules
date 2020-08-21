@@ -7,3 +7,6 @@
 [submodule "KieShop/ToolReception/lib/spdlog"]
 	path = KieShop/ToolReception/lib/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "KieShop/ToolReception/lib/fmt"]
+	path = KieShop/ToolReception/lib/fmt
+	url = https://github.com/fmtlib/fmt.git
