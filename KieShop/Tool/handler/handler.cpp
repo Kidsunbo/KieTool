@@ -8,6 +8,10 @@
 #include <boost/uuid/detail/sha1.hpp>
 #include <arpa/inet.h>
 
+#ifdef __linux__
+#include <string.h>
+#endif
+
 using namespace KieShop::tool;
 using namespace std;
 
@@ -17,7 +21,11 @@ using namespace std;
  * @return The hash value
  */
 auto hash32(int64 seed){
+#ifdef __linux__
+    seed = htobe64(seed);
+#elif __APPLE__
     seed=htonll(seed);
+#endif
     boost::uuids::detail::sha1 sha1;
     char bytes[sizeof(seed)]={0};
     memcpy(bytes,&seed,sizeof(seed));
