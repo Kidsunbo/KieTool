@@ -11,12 +11,18 @@ struct ShardingKeyRequest{
   255: base.Base base
 }
 
-struct ShardingKeyResponse{
+struct ShardingKeyItem{
   1: i32 shardingKey
   2: bool isNew
   3: i32 serverId
   4: i32 timestamp
   5: i32 counter
+}
+
+struct ShardingKeyResponse{
+  1: ShardingKeyItem orderId
+  2: ShardingKeyItem userId
+  3: ShardingKeyItem shopId
 
   255: base.BaseResp baseResp
 }
