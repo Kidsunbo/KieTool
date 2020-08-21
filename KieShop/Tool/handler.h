@@ -32,7 +32,7 @@ class ToolServiceHandler: public ToolServiceIf{
 public:
     void getShardingKey(ShardingKeyResponse &_return, const ShardingKeyRequest &sk) override{
         _return = ::getShardingKey(sk);
-        SPDLOG_INFO("logId={} func {}, request={}, response={}",sk.base.logId,__FUNCTION__,string_util::toString(sk),string_util::toString(_return));
+        SPDLOG_INFO("logId={} func={}, request={}, response={}",sk.base.logId,__FUNCTION__,string_util::toString(sk),string_util::toString(_return));
     }
 
 public:

@@ -24,13 +24,15 @@ void runServer(){
     threadManager->start();
 
     TThreadPoolServer server{processor,serverTransport,transportFactory,protocolFactory,threadManager};
+
+    SPDLOG_INFO("'{}' rpc server starts",PSM);
+
     server.serve();
 
 }
 
 std::unique_ptr<OrderId> parseUserId(int64 shopId);
 int main() {
-    SPDLOG_INFO("{} starts",PSM);
 
     runServer();
 }
