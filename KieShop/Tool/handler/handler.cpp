@@ -7,6 +7,8 @@
 #include <memory>
 #include <boost/uuid/detail/sha1.hpp>
 #include <arpa/inet.h>
+#include <spdlog/spdlog.h>
+#include "../util/string_util.h"
 
 #ifdef __linux__
 #include <cstring>
@@ -83,6 +85,7 @@ auto parseUserId(int64 userId){
 
 
 ShardingKeyResponse getShardingKey(const ShardingKeyRequest& sk){
+    SPDLOG_INFO("logId={} func={} sk={}",sk.base.logId,__FUNCTION__ ,string_util::toString(sk));
     ShardingKeyResponse resp;
     try {
         //Order Id
@@ -102,8 +105,10 @@ ShardingKeyResponse getShardingKey(const ShardingKeyRequest& sk){
         resp.userId.shardingKey=o->shard_key;
 
     } catch (std::exception& e) {
+        SPDLOG_INFO("logId={} func={} err={}",sk.base.logId,__FUNCTION__ ,e.what());
         resp.baseResp.statusCode=base::StatusCode::Fail;
         resp.baseResp.statusMessage=e.what();
     }
+    SPDLOG_INFO("logId={} func={} return successfully",sk.base.logId,__FUNCTION__);
     return resp;
 }
