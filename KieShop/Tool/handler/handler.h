@@ -7,6 +7,11 @@
 
 #include "../gen-cpp/tool_types.h"
 
+/**
+ * The handler function that calculates all the sharding key
+ * @param request The request body of the rpc function
+ * @return The sharding key information
+ */
 KieShop::tool::ShardingKeyResponse getShardingKey(const KieShop::tool::ShardingKeyRequest &request);
 
 #endif //_TOOL_HANDLER_H

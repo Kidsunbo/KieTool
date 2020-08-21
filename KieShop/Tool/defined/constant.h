@@ -11,6 +11,7 @@ static const unsigned int counterLength   = 51 - timestampLength - serverIdLengt
 static const unsigned int shardKeyLen = 10;
 static const unsigned int shardKeyMask =  (1ull<<shardKeyLen)-1;
 static const unsigned long long idGeneratorMask = 1ull<<62u | 1ull<<6u;
+static const unsigned int ShardingCountShopID=1001;
 
 using uint64 = unsigned long long;
 using int64 = long long;

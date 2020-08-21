@@ -1,3 +1,6 @@
 [submodule "KieShop/Tool/lib/spdlog"]
 	path = KieShop/Tool/lib/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "KieShop/ToolReception/lib/cinatra"]
+	path = KieShop/ToolReception/lib/cinatra
+	url = https://github.com/qicosmos/cinatra.git

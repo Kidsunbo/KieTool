@@ -1,6 +1,9 @@
 #include <memory>
 #include "handler.h"
 
+#include "dto/value.h"
+
+
 #define PSM "kie.shop.tool"
 
 void runServer(){
@@ -25,10 +28,9 @@ void runServer(){
 
 }
 
-
+std::unique_ptr<OrderId> parseUserId(int64 shopId);
 int main() {
     SPDLOG_INFO("{} starts",PSM);
 
     runServer();
-    return 0;
 }
