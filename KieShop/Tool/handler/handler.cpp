@@ -9,7 +9,7 @@
 #include <arpa/inet.h>
 
 #ifdef __linux__
-#include <string.h>
+#include <cstring>
 #endif
 
 using namespace KieShop::tool;
