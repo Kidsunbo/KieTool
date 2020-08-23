@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-RUN apt update &&DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata && apt install -y g++ cmake libboost-dev libthrift-0.13.0 git
+RUN apt update && DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata && apt install -y g++ cmake libboost-dev libthrift-0.13.0 git
 
 WORKDIR /root
 
