@@ -8,6 +8,6 @@ RUN git clone https://github.com/Kidsunbo/KieTool.git && cd KieTool/KieShop/Tool
 
 WORKDIR /root/KieTool/KieShop/Tool
 
-ENTRYPOINT ["sh"]
+ENTRYPOINT ["bash"]
 
-CMD ["build.sh"]
+#CMD ["build.sh"]
