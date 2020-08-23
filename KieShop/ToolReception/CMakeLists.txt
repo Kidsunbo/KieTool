@@ -18,4 +18,8 @@ target_include_directories(ToolReception PUBLIC lib/cinatra/include
         lib/fmt/include
         /Users/sunbo/Downloads/FrameWork/boost_1_73_0
         /usr/local/include)
-target_link_libraries(ToolReception PUBLIC ${THRIFT_LIB} fmt)
+if(THRIFT_LIB)
+    target_link_libraries(ToolReception PUBLIC ${THRIFT_LIB} fmt)
+else()
+    target_link_libraries(ToolReception PUBLIC thrift fmt)
+endif()
