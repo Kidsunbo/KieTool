@@ -22,6 +22,4 @@ ENTRYPOINT ["sh"]
 
 CMD ["build.sh"]
 
-FROM ubuntu:latest
-
 
