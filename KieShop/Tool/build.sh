@@ -4,6 +4,4 @@ fi
 cd release &&
 cmake -DCMAKE_BUILD_TYPE=Release .. &&
 make &&
-rm -rf logs &&
-mkdir logs&&
-./Tool
+make install

@@ -18,6 +18,4 @@ target_include_directories(ToolReception PUBLIC lib/cinatra/include
         lib/fmt/include
         /Users/sunbo/Downloads/FrameWork/boost_1_73_0
         /usr/local/include)
-target_link_libraries(ToolReception PUBLIC ${THRIFT_LIB} fmt pthread)
-
-install(TARGETS ToolReception DESTINATION /Users/sunbo/Desktop/KieTool/KieShop/ToolReception/bin)
+target_link_libraries(ToolReception PUBLIC ${THRIFT_LIB} fmt)

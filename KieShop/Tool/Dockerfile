@@ -21,3 +21,7 @@ WORKDIR /root/KieTool/KieShop/Tool
 ENTRYPOINT ["sh"]
 
 CMD ["build.sh"]
+
+FROM ubuntu:latest
+
+
