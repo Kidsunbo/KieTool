@@ -3,6 +3,7 @@ project(Tool)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+set(CMAKE_EXE_LINKER_FLAGS "-static")
 
 add_subdirectory(lib)
 
