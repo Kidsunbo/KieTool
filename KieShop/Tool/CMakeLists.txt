@@ -7,7 +7,7 @@ set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 
 add_subdirectory(lib)
 
-find_library(THRIFT NAMES thrift HINTS /usr/local/lib)
+find_library(THRIFT NAMES libthrift.a HINTS /usr/local/lib)
 aux_source_directory(gen-cpp thrift-gen)
 aux_source_directory(handler handler)
 aux_source_directory(dto dto)
@@ -16,5 +16,5 @@ aux_source_directory(util util)
 
 add_executable(Tool main.cpp ${thrift-gen} ${handler} ${dto} ${util})
 target_include_directories(Tool PUBLIC /usr/local/include /Users/sunbo/Downloads/FrameWork/boost_1_73_0 lib/spdlog/include)
-target_link_libraries(Tool PUBLIC ${THRIFT})
+target_link_libraries(Tool PUBLIC ${THRIFT} libssl.a libcrypto.a)
 install(TARGETS Tool DESTINATION /root/bin/Tool)
