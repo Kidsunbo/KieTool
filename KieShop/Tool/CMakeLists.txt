@@ -16,5 +16,6 @@ aux_source_directory(util util)
 add_executable(Tool main.cpp ${thrift-gen} ${handler} ${dto} ${util})
 target_include_directories(Tool PUBLIC /usr/local/include /Users/sunbo/Downloads/FrameWork/boost_1_73_0 lib/spdlog/include)
 target_link_libraries(Tool PUBLIC ${THRIFT})
-
-install(TARGETS Tool DESTINATION ../../bin/Tool)
+message(prefix)
+message(${CMAKE_INSTALL_PREFIX})
+install(TARGETS Tool DESTINATION /root/bin/Tool)
