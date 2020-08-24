@@ -14,7 +14,7 @@ RUN wget https://mirror.bit.edu.cn/apache/thrift/0.13.0/thrift-0.13.0.tar.gz && 
 
 WORKDIR /root
 
-RUN git clone https://github.com/Kidsunbo/KieTool.git && cd KieTool && git submodule update --init --recursive && echo hello
+RUN git clone https://github.com/Kidsunbo/KieTool.git && cd KieTool && git submodule update --init --recursive && echo hello1
 
 WORKDIR /root/KieTool/KieShop/Tool
 
