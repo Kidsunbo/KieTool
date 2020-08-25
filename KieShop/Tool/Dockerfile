@@ -24,6 +24,7 @@ FROM ubuntu:latest
 
 WORKDIR /root/
 
+COPY --from=0 /usr/local/lib/libthrift-0.13.0.so /usr/local/lib
 COPY --from=0 /root/bin/Tool/Tool .
 
 ENTRYPOINT ["/root/Tool"]
