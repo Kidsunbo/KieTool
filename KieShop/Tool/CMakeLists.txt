@@ -6,7 +6,7 @@ set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 
 add_subdirectory(lib)
 
-find_library(THRIFT NAMES thrift HINTS /usr/local/lib)
+find_library(THRIFT NAMES libthrift.a HINTS /usr/local/lib)
 aux_source_directory(gen-cpp thrift-gen)
 aux_source_directory(handler handler)
 aux_source_directory(dto dto)
