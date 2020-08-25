@@ -18,6 +18,14 @@ RUN git clone https://github.com/Kidsunbo/KieTool.git && cd KieTool/KieShop/Tool
 
 WORKDIR /root/KieTool/KieShop/ToolReception
 
-ENTRYPOINT ["sh"]
+RUN sh build.sh
 
-CMD ["build.sh"]
+FROM ubuntu:latest
+
+WORKDIR /root/
+
+COPY --from=0 /root/bin/Tool/ToolReception .
+
+ENTRYPOINT ["/root/ToolReception"]
+
+

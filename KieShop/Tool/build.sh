@@ -4,4 +4,4 @@ fi
 cd release &&
 cmake -DCMAKE_BUILD_TYPE=Release .. &&
 make &&
-make install && bash
+make install

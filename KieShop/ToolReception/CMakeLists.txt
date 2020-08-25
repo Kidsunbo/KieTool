@@ -2,10 +2,12 @@ cmake_minimum_required(VERSION 3.16)
 project(ToolReception)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+
 
 add_subdirectory(lib)
 
-find_library(THRIFT_LIB NAMES thrift HINTS /usr/local/lib)
+find_library(THRIFT_LIB NAMES libthrift.a HINTS /usr/local/lib)
 
 aux_source_directory(gen-cpp THRIFT)
 aux_source_directory(handler handler)
@@ -20,4 +22,4 @@ target_include_directories(ToolReception PUBLIC lib/cinatra/include
         /usr/local/include)
 target_link_libraries(ToolReception PUBLIC ${THRIFT_LIB} fmt pthread)
 
-install(TARGETS ToolReception DESTINATION /Users/sunbo/Desktop/KieTool/KieShop/ToolReception/bin)
+install(TARGETS ToolReception DESTINATION /root/bin/Tool)
