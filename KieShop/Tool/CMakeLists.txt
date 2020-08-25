@@ -14,5 +14,5 @@ find_package(Threads REQUIRED)
 
 add_executable(Tool main.cpp ${thrift-gen} ${handler} ${dto} ${util})
 target_include_directories(Tool PUBLIC /usr/local/include /Users/sunbo/Downloads/FrameWork/boost_1_73_0 lib/spdlog/include)
-target_link_libraries(Tool PUBLIC ${THRIFT})
+target_link_libraries(Tool PUBLIC ${THRIFT} pthread)
 install(TARGETS Tool DESTINATION /root/bin/Tool)
