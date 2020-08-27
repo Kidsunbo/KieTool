@@ -18,4 +18,5 @@ using int64 = long long;
 using uint32 = unsigned int;
 using int64 = long long;
 
+
 #endif //TOOL_CONSTANT_H

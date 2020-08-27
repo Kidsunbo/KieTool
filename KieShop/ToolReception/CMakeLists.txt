@@ -12,8 +12,9 @@ find_library(THRIFT_LIB NAMES libthrift.a HINTS /usr/local/lib)
 aux_source_directory(gen-cpp THRIFT)
 aux_source_directory(handler handler)
 aux_source_directory(client client)
+aux_source_directory(util helper)
 
-add_executable(ToolReception main.cpp ${client} ${handler} ${THRIFT})
+add_executable(ToolReception main.cpp ${client} ${handler} ${THRIFT} ${helper})
 target_include_directories(ToolReception PUBLIC lib/cinatra/include
         lib/spdlog/include
         lib/nlohmann
@@ -23,3 +24,5 @@ target_include_directories(ToolReception PUBLIC lib/cinatra/include
 target_link_libraries(ToolReception PUBLIC ${THRIFT_LIB} fmt pthread)
 
 install(TARGETS ToolReception DESTINATION /root/bin/Tool)
+
+#add_executable(test test.cpp ${helper})
