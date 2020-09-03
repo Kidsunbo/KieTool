@@ -22,7 +22,7 @@ namespace KieShop { namespace tool {
 class ToolServiceIf {
  public:
   virtual ~ToolServiceIf() {}
-  virtual void getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& sk) = 0;
+  virtual void getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& req) = 0;
 };
 
 class ToolServiceIfFactory {
@@ -52,14 +52,14 @@ class ToolServiceIfSingletonFactory : virtual public ToolServiceIfFactory {
 class ToolServiceNull : virtual public ToolServiceIf {
  public:
   virtual ~ToolServiceNull() {}
-  void getShardingKey(ShardingKeyResponse& /* _return */, const ShardingKeyRequest& /* sk */) {
+  void getShardingKey(ShardingKeyResponse& /* _return */, const ShardingKeyRequest& /* req */) {
     return;
   }
 };
 
 typedef struct _ToolService_getShardingKey_args__isset {
-  _ToolService_getShardingKey_args__isset() : sk(false) {}
-  bool sk :1;
+  _ToolService_getShardingKey_args__isset() : req(false) {}
+  bool req :1;
 } _ToolService_getShardingKey_args__isset;
 
 class ToolService_getShardingKey_args {
@@ -71,15 +71,15 @@ class ToolService_getShardingKey_args {
   }
 
   virtual ~ToolService_getShardingKey_args() noexcept;
-  ShardingKeyRequest sk;
+  ShardingKeyRequest req;
 
   _ToolService_getShardingKey_args__isset __isset;
 
-  void __set_sk(const ShardingKeyRequest& val);
+  void __set_req(const ShardingKeyRequest& val);
 
   bool operator == (const ToolService_getShardingKey_args & rhs) const
   {
-    if (!(sk == rhs.sk))
+    if (!(req == rhs.req))
       return false;
     return true;
   }
@@ -100,7 +100,7 @@ class ToolService_getShardingKey_pargs {
 
 
   virtual ~ToolService_getShardingKey_pargs() noexcept;
-  const ShardingKeyRequest* sk;
+  const ShardingKeyRequest* req;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
@@ -186,8 +186,8 @@ class ToolServiceClient : virtual public ToolServiceIf {
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  void getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& sk);
-  void send_getShardingKey(const ShardingKeyRequest& sk);
+  void getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& req);
+  void send_getShardingKey(const ShardingKeyRequest& req);
   void recv_getShardingKey(ShardingKeyResponse& _return);
  protected:
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
@@ -237,13 +237,13 @@ class ToolServiceMultiface : virtual public ToolServiceIf {
     ifaces_.push_back(iface);
   }
  public:
-  void getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& sk) {
+  void getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& req) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->getShardingKey(_return, sk);
+      ifaces_[i]->getShardingKey(_return, req);
     }
-    ifaces_[i]->getShardingKey(_return, sk);
+    ifaces_[i]->getShardingKey(_return, req);
     return;
   }
 
@@ -279,8 +279,8 @@ class ToolServiceConcurrentClient : virtual public ToolServiceIf {
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  void getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& sk);
-  int32_t send_getShardingKey(const ShardingKeyRequest& sk);
+  void getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& req);
+  int32_t send_getShardingKey(const ShardingKeyRequest& req);
   void recv_getShardingKey(ShardingKeyResponse& _return, const int32_t seqid);
  protected:
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;

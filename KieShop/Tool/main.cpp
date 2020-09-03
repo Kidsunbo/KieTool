@@ -31,7 +31,6 @@ void runServer(){
 
 }
 
-std::unique_ptr<OrderId> parseUserId(int64 shopId);
 int main() {
 
     runServer();

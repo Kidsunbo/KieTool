@@ -27,15 +27,12 @@ using namespace ::apache::thrift::concurrency;
 using namespace std;
 using namespace KieShop::tool;
 
-
 class ToolServiceHandler: public ToolServiceIf{
 public:
-    void getShardingKey(ShardingKeyResponse &_return, const ShardingKeyRequest &sk) override{
-        _return = ::getShardingKey(sk);
-        SPDLOG_INFO("logId={} func={}, request={}, response={}",sk.base.logId,__FUNCTION__,string_util::toString(sk),string_util::toString(_return));
+    void getShardingKey(ShardingKeyResponse &_return, const ShardingKeyRequest &req) override{
+        _return = ::getShardingKey(req);
+        SPDLOG_INFO("logId={} func={}, request={}, response={}",req.base.logId,__FUNCTION__,string_util::toString(req),string_util::toString(_return));
     }
-
-public:
 };
 
 

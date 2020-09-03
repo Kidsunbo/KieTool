@@ -26,16 +26,13 @@ public:
      * @return The string
      */
     template<typename T, std::enable_if_t<PRINTABLE<T>::value,int> =0>
-    static std::string toString(T&& t);
+    static std::string toString(T&& t){
+        using namespace std;
+        stringstream s;
+        s<<t;
+        return s.str();
+    }
 };
-
-template<typename T, std::enable_if_t<PRINTABLE<T>::value, int>>
-std::string string_util::toString(T&& t) {
-    using namespace std;
-    stringstream s;
-    s<<t;
-    return s.str();
-}
 
 
 #endif //TOOL_STRING_UTIL_H

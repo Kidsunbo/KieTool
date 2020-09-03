@@ -36,8 +36,8 @@ uint32_t ToolService_getShardingKey_args::read(::apache::thrift::protocol::TProt
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->sk.read(iprot);
-          this->__isset.sk = true;
+          xfer += this->req.read(iprot);
+          this->__isset.req = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -59,8 +59,8 @@ uint32_t ToolService_getShardingKey_args::write(::apache::thrift::protocol::TPro
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("ToolService_getShardingKey_args");
 
-  xfer += oprot->writeFieldBegin("sk", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->sk.write(oprot);
+  xfer += oprot->writeFieldBegin("req", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->req.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -78,8 +78,8 @@ uint32_t ToolService_getShardingKey_pargs::write(::apache::thrift::protocol::TPr
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("ToolService_getShardingKey_pargs");
 
-  xfer += oprot->writeFieldBegin("sk", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += (*(this->sk)).write(oprot);
+  xfer += oprot->writeFieldBegin("req", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->req)).write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -195,19 +195,19 @@ uint32_t ToolService_getShardingKey_presult::read(::apache::thrift::protocol::TP
   return xfer;
 }
 
-void ToolServiceClient::getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& sk)
+void ToolServiceClient::getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& req)
 {
-  send_getShardingKey(sk);
+  send_getShardingKey(req);
   recv_getShardingKey(_return);
 }
 
-void ToolServiceClient::send_getShardingKey(const ShardingKeyRequest& sk)
+void ToolServiceClient::send_getShardingKey(const ShardingKeyRequest& req)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("getShardingKey", ::apache::thrift::protocol::T_CALL, cseqid);
 
   ToolService_getShardingKey_pargs args;
-  args.sk = &sk;
+  args.req = &req;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -295,7 +295,7 @@ void ToolServiceProcessor::process_getShardingKey(int32_t seqid, ::apache::thrif
 
   ToolService_getShardingKey_result result;
   try {
-    iface_->getShardingKey(result.success, args.sk);
+    iface_->getShardingKey(result.success, args.req);
     result.__isset.success = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
@@ -333,20 +333,20 @@ void ToolServiceProcessor::process_getShardingKey(int32_t seqid, ::apache::thrif
   return processor;
 }
 
-void ToolServiceConcurrentClient::getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& sk)
+void ToolServiceConcurrentClient::getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& req)
 {
-  int32_t seqid = send_getShardingKey(sk);
+  int32_t seqid = send_getShardingKey(req);
   recv_getShardingKey(_return, seqid);
 }
 
-int32_t ToolServiceConcurrentClient::send_getShardingKey(const ShardingKeyRequest& sk)
+int32_t ToolServiceConcurrentClient::send_getShardingKey(const ShardingKeyRequest& req)
 {
   int32_t cseqid = this->sync_->generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(this->sync_.get());
   oprot_->writeMessageBegin("getShardingKey", ::apache::thrift::protocol::T_CALL, cseqid);
 
   ToolService_getShardingKey_pargs args;
-  args.sk = &sk;
+  args.req = &req;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
