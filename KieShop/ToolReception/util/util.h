@@ -8,7 +8,6 @@
 #include <string>
 #include "../gen-cpp/base_types.h"
 #include "cinatra/http_server.hpp"
-//#include "cinatra/client_factory.hpp"
 
 
 

@@ -8,8 +8,9 @@
 
 
 #include "../gen-cpp/ToolService.h"
+#include <mutex>
 
 extern KieShop::tool::ToolServiceClient toolServiceClient;
-
+extern std::mutex toolServiceMutex;
 
 #endif //TOOLRECEPTION_TOOL_CLIENT_H

@@ -8,29 +8,40 @@
 #include <nlohmann/json.hpp>
 #include <fmt/format.h>
 #include <spdlog/spdlog.h>
+#include "../dto/wrapper.h"
+
 
 namespace handler {
-
     void shardingKeyHandler(cinatra::request &req, cinatra::response &resp) {
-        SPDLOG_INFO("request from ip={}",util::getClientIp(req));
-        auto id = req.get_query_value("id");
-        KieShop::tool::ShardingKeyResponse response;
-        KieShop::tool::ShardingKeyRequest request;
-        util::wrapBase(request.base);
-        request.id=id;
-        toolServiceClient.getShardingKey(response,request);
-        if(response.baseResp.statusCode==base::StatusCode::Fail){
-            resp.set_status_and_content(cinatra::status_type::ok,"something wrong, please contact Kie",cinatra::req_content_type::json);
-            return;
-        }
+        try {
+            SPDLOG_INFO("request from ip={}", util::getClientIp(req));
+            auto id = req.get_query_value("id");
+            KieShop::tool::ShardingKeyResponse response;
+            KieShop::tool::ShardingKeyRequest request;
+            util::wrapBase(request.base);
+            request.id = id;
 
-        //When I use C++23, there will be reflection which can help me do this elegantly
-        nlohmann::json j;
-        j["order_id_sharding_key"]=response.orderId.shardingKey;
-        j["shop_id_sharding_key"]=response.shopId.shardingKey;
-        j["user_id_sharding_key"]=response.userId.shardingKey;
-        j["select_order_id"]=fmt::format("SELECT * FROM t_order_base WHERE order_id={} and sharding_key={} LIMIT 1;",id,response.orderId.shardingKey);
-        resp.set_status_and_content(cinatra::status_type::ok,j.dump(),cinatra::req_content_type::json);
+            {
+                std::lock_guard<std::mutex> lock(toolServiceMutex);
+                toolServiceClient.getShardingKey(response, request);
+            }
+            if (response.baseResp.statusCode == base::StatusCode::Fail) {
+                resp.set_status_and_content(cinatra::status_type::ok, "something wrong, please contact Kie",
+                                            cinatra::req_content_type::json);
+                return;
+            }
+
+            dto::ShardingKey sk;
+            sk.orderId = id;
+            sk.userIdSK = response.userId.shardingKey;
+            sk.shopIdSK = response.shopId.shardingKey;
+            sk.orderIdSK = response.orderId.shardingKey;
+            resp.set_status_and_content(cinatra::status_type::ok, sk.to_json(), cinatra::req_content_type::json);
+        } catch (std::exception& e) {
+            nlohmann::json j;
+            j["error"]=e.what();
+            resp.set_status_and_content(cinatra::status_type::ok,j.dump(4),cinatra::req_content_type::json);
+        }
     }
 
 

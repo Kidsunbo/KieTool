@@ -17,6 +17,7 @@ using namespace apache::thrift::transport;
  * bad practice, just for fun
  */
 KieShop::tool::ToolServiceClient toolServiceClient(nullptr);
+std::mutex toolServiceMutex;
 
 static void init(){
     std::shared_ptr<TTransport> socket(new TSocket("localhost", 9090));

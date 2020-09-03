@@ -13,8 +13,9 @@ aux_source_directory(gen-cpp THRIFT)
 aux_source_directory(handler handler)
 aux_source_directory(client client)
 aux_source_directory(util helper)
+aux_source_directory(dto online)
 
-add_executable(ToolReception main.cpp ${client} ${handler} ${THRIFT} ${helper})
+add_executable(ToolReception main.cpp ${client} ${handler} ${THRIFT} ${helper} ${online})
 target_include_directories(ToolReception PUBLIC lib/cinatra/include
         lib/spdlog/include
         lib/nlohmann
