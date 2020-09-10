@@ -17,7 +17,7 @@ namespace dto{
         j["shop_id_sharding_key"] = shopIdSK;
         j["user_id_sharding_key"] = userIdSK;
         j["select_order_id"] = fmt::format(
-                "SELECT * FROM t_order_base WHERE order_id={} and sharding_key={} LIMIT 1;", orderId,
+                "SELECT * FROM t_order_base WHERE order_id={} AND sharding_key={} LIMIT 1;", orderId,
                 orderIdSK);
         return j.dump(4);
     }

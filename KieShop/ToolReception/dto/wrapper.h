@@ -6,13 +6,15 @@
 #define TOOLRECEPTION_WRAPPER_H
 #include <string>
 
+#define CREATE_DTO(x) struct x:public Serialization
+
 namespace dto {
     class Serialization{
     public:
         virtual std::string to_json() = 0;
     };
 
-    struct ShardingKey:public Serialization{
+    CREATE_DTO(ShardingKey){
         std::string to_json() override;
         int orderIdSK;
         int userIdSK;
