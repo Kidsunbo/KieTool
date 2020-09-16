@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(ToolReception)
+project(KieShop_tool_reception)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
@@ -15,15 +15,15 @@ aux_source_directory(client client)
 aux_source_directory(util helper)
 aux_source_directory(dto online)
 
-add_executable(ToolReception main.cpp ${client} ${handler} ${THRIFT} ${helper} ${online})
-target_include_directories(ToolReception PUBLIC lib/cinatra/include
+add_executable(KieShop_tool_reception main.cpp ${client} ${handler} ${THRIFT} ${helper} ${online})
+target_include_directories(kieShop_tool_reception PUBLIC lib/cinatra/include
         lib/spdlog/include
         lib/nlohmann
         lib/fmt/include
         /Users/sunbo/Downloads/FrameWork/boost_1_73_0
         /usr/local/include)
-target_link_libraries(ToolReception PUBLIC ${THRIFT_LIB} fmt pthread)
+target_link_libraries(KieShop_tool_reception PUBLIC ${THRIFT_LIB} fmt pthread)
 
-install(TARGETS ToolReception DESTINATION /root/bin/Tool)
+install(TARGETS KieShop_tool_reception DESTINATION /root/bin/Tool)
 
 #add_executable(test test.cpp ${helper})
