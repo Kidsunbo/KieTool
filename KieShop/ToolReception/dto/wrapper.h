@@ -13,15 +13,15 @@ namespace dto {
 class Serialization : public std::enable_shared_from_this<Serialization>{
     public:
         virtual std::string to_json()=0;
-        int errorNo = {};
+        int errorNo = 0;
         std::string errorMsg;
     };
 
     CREATE_DTO(ShardingKey){
         std::string to_json() override;
-        int orderIdSK ={};
-        int userIdSK = {};
-        int shopIdSK = {};
+        int orderIdSK =0;
+        int userIdSK = 0;
+        int shopIdSK = 0;
         std::string orderId;
     };
 
