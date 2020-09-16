@@ -108,6 +108,7 @@ ShardingKeyResponse getShardingKey(const ShardingKeyRequest& sk){
         SPDLOG_INFO("logId={} func={} err={}",sk.base.logId,__FUNCTION__ ,e.what());
         resp.baseResp.statusCode=base::StatusCode::Fail;
         resp.baseResp.statusMessage=e.what();
+        return resp;
     }
     SPDLOG_INFO("logId={} func={} return successfully",sk.base.logId,__FUNCTION__);
     return resp;
