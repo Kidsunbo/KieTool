@@ -32,7 +32,7 @@ namespace handler {
             dto::ShardingKey sk;
             if (response.baseResp.statusCode == base::StatusCode::Fail) {
                 sk.errorNo = 10001;
-                sk.errorMsg = "Something is wrong, please contact Kie";
+                sk.errorMsg = response.baseResp.statusMessage;
                 resp.set_status_and_content(cinatra::status_type::ok, sk.to_json(),cinatra::req_content_type::string);
                 return;
             }

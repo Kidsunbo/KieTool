@@ -84,32 +84,42 @@ auto parseUserId(int64 userId){
 }
 
 
-ShardingKeyResponse getShardingKey(const ShardingKeyRequest& sk){
-    SPDLOG_INFO("logId={} func={} sk={}",sk.base.logId,__FUNCTION__ ,string_util::toString(sk));
+ShardingKeyResponse getShardingKey(const ShardingKeyRequest& sk) {
+    SPDLOG_INFO("logId={} func={} sk={}", sk.base.logId, __FUNCTION__, string_util::toString(sk));
     ShardingKeyResponse resp;
     try {
         //Order Id
         auto id = std::stoll(sk.id);
         auto o = parseOrderId(id);
         resp.orderId.shardingKey = o->shard_key;
-        resp.orderId.counter=o->counter;
-        resp.orderId.timestamp=o->timestamp;
-        resp.orderId.serverId=o->server_id;
-        resp.orderId.isNew=o->is_new;
+        resp.orderId.counter = o->counter;
+        resp.orderId.timestamp = o->timestamp;
+        resp.orderId.serverId = o->server_id;
+        resp.orderId.isNew = o->is_new;
 
         //TODO Shop Id
-        o=parseShopId(id);
-        resp.shopId.shardingKey=o->shard_key;
+        o = parseShopId(id);
+        resp.shopId.shardingKey = o->shard_key;
         //TODO User Id
-        o=parseUserId(id);
-        resp.userId.shardingKey=o->shard_key;
+        o = parseUserId(id);
+        resp.userId.shardingKey = o->shard_key;
 
-    } catch (std::exception& e) {
-        SPDLOG_INFO("logId={} func={} err={}",sk.base.logId,__FUNCTION__ ,e.what());
-        resp.baseResp.statusCode=base::StatusCode::Fail;
-        resp.baseResp.statusMessage=e.what();
+    } catch (std::out_of_range &e) {
+        SPDLOG_INFO("logId={} func={} err={}", sk.base.logId, __FUNCTION__, e.what());
+        resp.baseResp.statusCode = base::StatusCode::Fail;
+        resp.baseResp.statusMessage = "The id is out of range";
+        return resp;
+    } catch (std::invalid_argument &e) {
+        SPDLOG_INFO("logId={} func={} err={}", sk.base.logId, __FUNCTION__, e.what());
+        resp.baseResp.statusCode = base::StatusCode::Fail;
+        resp.baseResp.statusMessage = "The id is invalid";
+        return resp;
+    } catch (std::exception &e) {
+        SPDLOG_INFO("logId={} func={} err={}", sk.base.logId, __FUNCTION__, e.what());
+        resp.baseResp.statusCode = base::StatusCode::Fail;
+        resp.baseResp.statusMessage = e.what();
         return resp;
     }
-    SPDLOG_INFO("logId={} func={} return successfully",sk.base.logId,__FUNCTION__);
+    SPDLOG_INFO("logId={} func={} return successfully", sk.base.logId, __FUNCTION__);
     return resp;
 }
