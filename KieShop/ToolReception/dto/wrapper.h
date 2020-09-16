@@ -5,12 +5,11 @@
 #ifndef TOOLRECEPTION_WRAPPER_H
 #define TOOLRECEPTION_WRAPPER_H
 #include <string>
-
 #define CREATE_DTO(x) struct x:public Serialization
 
 namespace dto {
 
-class Serialization : public std::enable_shared_from_this<Serialization>{
+class Serialization{
     public:
         virtual std::string to_json()=0;
         int errorNo = 0;
