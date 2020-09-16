@@ -4,8 +4,6 @@
 #include "dto/value.h"
 
 
-#define PSM "kie.shop.tool"
-
 void runServer(){
 
     int port = 9090;

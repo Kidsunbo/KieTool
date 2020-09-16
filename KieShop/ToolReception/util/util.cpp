@@ -28,6 +28,15 @@ namespace util{
         b.callerIp = getIp();
     }
 
+    bool wrapError(dto::Serialization& s,nlohmann::json& j){
+        j["error_number"] = s.errorNo;
+        j["error_message"] = s.errorMsg;
+        if(s.errorNo!=0){
+            return false;
+        }
+        return true;
+    }
+
     std::string getClientIp(cinatra::request &req){
         return req.get_conn<cinatra::NonSSL>()->remote_address();
     }

@@ -22,8 +22,8 @@ FROM ubuntu:latest
 
 WORKDIR /root/
 
-COPY --from=0 /root/bin/Tool/ToolReception .
+COPY --from=0 /root/bin/Tool/KieShop_tool_reception .
 
-ENTRYPOINT ["/root/ToolReception"]
+ENTRYPOINT ["/root/KieShop_tool_reception"]
 
 

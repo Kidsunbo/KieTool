@@ -8,11 +8,15 @@
 #include <string>
 #include "../gen-cpp/base_types.h"
 #include "cinatra/http_server.hpp"
+#include "../dto/wrapper.h"
+#include <nlohmann/json.hpp>
 
 
 
 namespace util {
     void wrapBase(base::Base& b);
+
+    bool wrapError(dto::Serialization& s,nlohmann::json& j);
 
     std::string getClientIp(cinatra::request &req);
 }

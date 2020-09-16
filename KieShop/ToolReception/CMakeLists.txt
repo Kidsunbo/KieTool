@@ -16,7 +16,7 @@ aux_source_directory(util helper)
 aux_source_directory(dto online)
 
 add_executable(KieShop_tool_reception main.cpp ${client} ${handler} ${THRIFT} ${helper} ${online})
-target_include_directories(kieShop_tool_reception PUBLIC lib/cinatra/include
+target_include_directories(KieShop_tool_reception PUBLIC lib/cinatra/include
         lib/spdlog/include
         lib/nlohmann
         lib/fmt/include

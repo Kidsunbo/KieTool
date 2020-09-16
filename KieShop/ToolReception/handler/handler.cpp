@@ -16,6 +16,10 @@ namespace handler {
         try {
             SPDLOG_INFO("request from ip={}", util::getClientIp(req));
             auto id = req.get_query_value("id");
+            if(id.empty()){
+                throw std::logic_error("The id is empty");
+            }
+
             KieShop::tool::ShardingKeyResponse response;
             KieShop::tool::ShardingKeyRequest request;
             util::wrapBase(request.base);
@@ -25,13 +29,13 @@ namespace handler {
                 std::lock_guard<std::mutex> lock(toolServiceMutex);
                 toolServiceClient.getShardingKey(response, request);
             }
+            dto::ShardingKey sk;
             if (response.baseResp.statusCode == base::StatusCode::Fail) {
-                resp.set_status_and_content(cinatra::status_type::ok, "something wrong, please contact Kie",
-                                            cinatra::req_content_type::json);
+                sk.errorNo = 10001;
+                sk.errorMsg = "Something is wrong, please contact Kie";
+                resp.set_status_and_content(cinatra::status_type::ok, sk.to_json(),cinatra::req_content_type::string);
                 return;
             }
-
-            dto::ShardingKey sk;
             sk.orderId = id;
             sk.userIdSK = response.userId.shardingKey;
             sk.shopIdSK = response.shopId.shardingKey;

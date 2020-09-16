@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(Tool)
+project(KieShop_tool_logistic)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
@@ -12,9 +12,9 @@ aux_source_directory(handler handler)
 aux_source_directory(dto dto)
 aux_source_directory(util util)
 
-add_executable(Tool main.cpp ${thrift-gen} ${handler} ${dto} ${util})
-target_include_directories(Tool PUBLIC /usr/local/include
+add_executable(KieShop_tool_logistic main.cpp ${thrift-gen} ${handler} ${dto} ${util})
+target_include_directories(KieShop_tool_logistic PUBLIC /usr/local/include
         /Users/sunbo/Downloads/FrameWork/boost_1_73_0
         lib/spdlog/include)
-target_link_libraries(Tool PUBLIC ${THRIFT} pthread)
-install(TARGETS Tool DESTINATION /root/bin/Tool)
+target_link_libraries(KieShop_tool_logistic PUBLIC ${THRIFT} pthread)
+install(TARGETS KieShop_tool_logistic DESTINATION /root/bin/Tool)

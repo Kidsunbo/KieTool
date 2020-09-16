@@ -5,6 +5,9 @@
 #ifndef TOOL_CONSTANT_H
 #define TOOL_CONSTANT_H
 
+#define PSM "kieShop.tool"
+
+
 static const unsigned int timestampLength = 30;
 static const unsigned int serverIdLength  = 6;
 static const unsigned int counterLength   = 51 - timestampLength - serverIdLength;
@@ -17,6 +20,8 @@ using uint64 = unsigned long long;
 using int64 = long long;
 using uint32 = unsigned int;
 using int64 = long long;
+
+
 
 
 #endif //TOOL_CONSTANT_H
