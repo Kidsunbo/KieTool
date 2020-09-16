@@ -5,7 +5,7 @@
 #ifndef TOOL_CONSTANT_H
 #define TOOL_CONSTANT_H
 
-#define PSM "kieShop.tool"
+#define PSM "KieShop.tool.logistic"
 
 
 static const unsigned int timestampLength = 30;

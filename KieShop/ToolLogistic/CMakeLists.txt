@@ -17,4 +17,4 @@ target_include_directories(KieShop_tool_logistic PUBLIC /usr/local/include
         /Users/sunbo/Downloads/FrameWork/boost_1_73_0
         lib/spdlog/include)
 target_link_libraries(KieShop_tool_logistic PUBLIC ${THRIFT} pthread)
-install(TARGETS KieShop_tool_logistic DESTINATION /root/bin/Tool)
+install(TARGETS KieShop_tool_logistic DESTINATION /root/bin/ToolLogistic)
