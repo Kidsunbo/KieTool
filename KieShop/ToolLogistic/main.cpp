@@ -23,13 +23,12 @@ void runServer(){
 
     TThreadPoolServer server{processor,serverTransport,transportFactory,protocolFactory,threadManager};
 
-    SPDLOG_INFO("'{}' rpc server starts",PSM);
+    SPDLOG_INFO("'{}' rpc server starts. DATA_CENTER_ID={}, MACHINE_ID={}",PSM,DataCenterID,MachineID);
 
     server.serve();
 
 }
 
 int main() {
-
     runServer();
 }

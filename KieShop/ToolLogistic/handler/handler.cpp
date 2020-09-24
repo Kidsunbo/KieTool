@@ -6,9 +6,9 @@
 #include "../dto/value.h"
 #include <memory>
 #include <boost/uuid/detail/sha1.hpp>
-#include <arpa/inet.h>
 #include <spdlog/spdlog.h>
 #include "../util/string_util.h"
+#include <cstdlib>
 
 #ifdef __linux__
 #include <cstring>
@@ -16,6 +16,9 @@
 
 using namespace KieShop::tool;
 using namespace std;
+
+
+/*****************Sharding Key********************/
 
 /**
  * Get the hash32 value with sha1 algorithm
@@ -123,3 +126,48 @@ ShardingKeyResponse getShardingKey(const ShardingKeyRequest& sk) {
     SPDLOG_INFO("logId={} func={} return successfully", sk.base.logId, __FUNCTION__);
     return resp;
 }
+
+/*****************End Sharding Key********************/
+
+/*********************Snow Flake***********************/
+
+static std::atomic_int64_t snowFlakeId = 0;
+static unsigned long long lastTimeStamp = 0;
+
+KieShop::tool::SnowFlakeResponse getSnowFlake(const KieShop::tool::SnowFlakeRequest& sk){
+    SPDLOG_INFO("logId={} func={} sk={}", sk.base.logId, __FUNCTION__, string_util::toString(sk));
+    SnowFlakeResponse resp;
+    auto current = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+    if(current!=lastTimeStamp){
+        snowFlakeId=0;
+        lastTimeStamp=current;
+    }
+    uint64 id = 0;
+    //Datetime part
+    uint64 temp = 0;
+    temp|=static_cast<uint64>(current%dateTimeMaxCount);
+    temp<<=(dataCenterNumberShiftBits+machineNumberShiftBits+randomNumberShiftBits);
+    id |=temp;
+
+    //DataCenter Part
+    temp =0;
+    temp|=static_cast<uint>(DataCenterID%dataCenterNumberMaxCount);
+    temp<<=(machineNumberShiftBits+randomNumberShiftBits);
+    id |=temp;
+
+    //Machine Part
+    temp=0;
+    temp |= static_cast<uint>(MachineID%machineNumberMaxCount);
+    temp<<=(randomNumberShiftBits);
+    id |=temp;
+
+    //Random Number Part
+    temp=0;
+    temp |= static_cast<uint>(snowFlakeId%randomNumberMaxCount);
+    id |= temp;
+
+    snowFlakeId++;
+    resp.id=id;
+    return resp;
+}
+/*****************End Snow Flake***********************/

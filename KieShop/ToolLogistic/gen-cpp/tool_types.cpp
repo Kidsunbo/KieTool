@@ -449,4 +449,208 @@ void ShardingKeyResponse::printTo(std::ostream& out) const {
   out << ")";
 }
 
+
+SnowFlakeRequest::~SnowFlakeRequest() noexcept {
+}
+
+
+void SnowFlakeRequest::__set_base(const  ::base::Base& val) {
+  this->base = val;
+}
+std::ostream& operator<<(std::ostream& out, const SnowFlakeRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+uint32_t SnowFlakeRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 255:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->base.read(iprot);
+          this->__isset.base = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t SnowFlakeRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("SnowFlakeRequest");
+
+  xfer += oprot->writeFieldBegin("base", ::apache::thrift::protocol::T_STRUCT, 255);
+  xfer += this->base.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(SnowFlakeRequest &a, SnowFlakeRequest &b) {
+  using ::std::swap;
+  swap(a.base, b.base);
+  swap(a.__isset, b.__isset);
+}
+
+SnowFlakeRequest::SnowFlakeRequest(const SnowFlakeRequest& other6) {
+  base = other6.base;
+  __isset = other6.__isset;
+}
+SnowFlakeRequest& SnowFlakeRequest::operator=(const SnowFlakeRequest& other7) {
+  base = other7.base;
+  __isset = other7.__isset;
+  return *this;
+}
+void SnowFlakeRequest::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "SnowFlakeRequest(";
+  out << "base=" << to_string(base);
+  out << ")";
+}
+
+
+SnowFlakeResponse::~SnowFlakeResponse() noexcept {
+}
+
+
+void SnowFlakeResponse::__set_id(const int64_t val) {
+  this->id = val;
+}
+
+void SnowFlakeResponse::__set_baseResp(const  ::base::BaseResp& val) {
+  this->baseResp = val;
+}
+std::ostream& operator<<(std::ostream& out, const SnowFlakeResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+uint32_t SnowFlakeResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_I64) {
+          xfer += iprot->readI64(this->id);
+          this->__isset.id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 255:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->baseResp.read(iprot);
+          this->__isset.baseResp = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t SnowFlakeResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("SnowFlakeResponse");
+
+  xfer += oprot->writeFieldBegin("id", ::apache::thrift::protocol::T_I64, 1);
+  xfer += oprot->writeI64(this->id);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("baseResp", ::apache::thrift::protocol::T_STRUCT, 255);
+  xfer += this->baseResp.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(SnowFlakeResponse &a, SnowFlakeResponse &b) {
+  using ::std::swap;
+  swap(a.id, b.id);
+  swap(a.baseResp, b.baseResp);
+  swap(a.__isset, b.__isset);
+}
+
+SnowFlakeResponse::SnowFlakeResponse(const SnowFlakeResponse& other8) {
+  id = other8.id;
+  baseResp = other8.baseResp;
+  __isset = other8.__isset;
+}
+SnowFlakeResponse& SnowFlakeResponse::operator=(const SnowFlakeResponse& other9) {
+  id = other9.id;
+  baseResp = other9.baseResp;
+  __isset = other9.__isset;
+  return *this;
+}
+void SnowFlakeResponse::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "SnowFlakeResponse(";
+  out << "id=" << to_string(id);
+  out << ", " << "baseResp=" << to_string(baseResp);
+  out << ")";
+}
+
 }} // namespace

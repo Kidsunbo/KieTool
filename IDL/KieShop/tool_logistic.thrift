@@ -5,6 +5,7 @@ namespace py KieShop.tool
 
 include "../base.thrift"
 
+/**********************Sharding Key********************/
 struct ShardingKeyRequest{
   1: string id #The ID that to be parsed
 
@@ -26,7 +27,22 @@ struct ShardingKeyResponse{
 
   255: base.BaseResp baseResp
 }
+/**********************End Sharding Key*****************s*/
+
+/**********************Snow Flake********************/
+struct SnowFlakeRequest{
+
+  255: base.Base base
+}
+
+struct SnowFlakeResponse{
+  1: i64 id
+
+  255: base.BaseResp baseResp
+}
+/**********************End Snow Flake********************/
 
 service ToolService{
    ShardingKeyResponse getShardingKey(1: ShardingKeyRequest req)
+   SnowFlakeResponse getSnowFlake(1: SnowFlakeRequest req)
 }

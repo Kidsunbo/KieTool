@@ -11,6 +11,7 @@ int main() {
     http_server server(max_thread_num);
     server.listen("0.0.0.0", "12138");
     server.set_http_handler<GET, POST>("/api/tool/sharding-key", handler::shardingKeyHandler);
+    server.set_http_handler<GET>("/api/tool/snow-flake",handler::snowFlakeHandler);
     SPDLOG_INFO("start server");
     server.run();
     return 0;

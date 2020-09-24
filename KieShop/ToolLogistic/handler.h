@@ -33,6 +33,11 @@ public:
         _return = ::getShardingKey(req);
         SPDLOG_INFO("logId={} func={}, request={}, response={}",req.base.logId,__FUNCTION__,string_util::toString(req),string_util::toString(_return));
     }
+
+    void getSnowFlake(SnowFlakeResponse &_return, const SnowFlakeRequest &req) override {
+        _return = ::getSnowFlake(req);
+        SPDLOG_INFO("logId={} func={}, request={}, response={}",req.base.logId,__FUNCTION__,string_util::toString(req),string_util::toString(_return));
+    }
 };
 
 

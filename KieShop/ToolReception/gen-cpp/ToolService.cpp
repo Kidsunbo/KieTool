@@ -36,8 +36,8 @@ uint32_t ToolService_getShardingKey_args::read(::apache::thrift::protocol::TProt
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->sk.read(iprot);
-          this->__isset.sk = true;
+          xfer += this->req.read(iprot);
+          this->__isset.req = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -59,8 +59,8 @@ uint32_t ToolService_getShardingKey_args::write(::apache::thrift::protocol::TPro
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("ToolService_getShardingKey_args");
 
-  xfer += oprot->writeFieldBegin("sk", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->sk.write(oprot);
+  xfer += oprot->writeFieldBegin("req", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->req.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -78,8 +78,8 @@ uint32_t ToolService_getShardingKey_pargs::write(::apache::thrift::protocol::TPr
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("ToolService_getShardingKey_pargs");
 
-  xfer += oprot->writeFieldBegin("sk", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += (*(this->sk)).write(oprot);
+  xfer += oprot->writeFieldBegin("req", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->req)).write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -195,19 +195,206 @@ uint32_t ToolService_getShardingKey_presult::read(::apache::thrift::protocol::TP
   return xfer;
 }
 
-void ToolServiceClient::getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& sk)
+
+ToolService_getSnowFlake_args::~ToolService_getSnowFlake_args() noexcept {
+}
+
+
+uint32_t ToolService_getSnowFlake_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->req.read(iprot);
+          this->__isset.req = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ToolService_getSnowFlake_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ToolService_getSnowFlake_args");
+
+  xfer += oprot->writeFieldBegin("req", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->req.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+ToolService_getSnowFlake_pargs::~ToolService_getSnowFlake_pargs() noexcept {
+}
+
+
+uint32_t ToolService_getSnowFlake_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ToolService_getSnowFlake_pargs");
+
+  xfer += oprot->writeFieldBegin("req", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->req)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+ToolService_getSnowFlake_result::~ToolService_getSnowFlake_result() noexcept {
+}
+
+
+uint32_t ToolService_getSnowFlake_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ToolService_getSnowFlake_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("ToolService_getSnowFlake_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+ToolService_getSnowFlake_presult::~ToolService_getSnowFlake_presult() noexcept {
+}
+
+
+uint32_t ToolService_getSnowFlake_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+void ToolServiceClient::getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& req)
 {
-  send_getShardingKey(sk);
+  send_getShardingKey(req);
   recv_getShardingKey(_return);
 }
 
-void ToolServiceClient::send_getShardingKey(const ShardingKeyRequest& sk)
+void ToolServiceClient::send_getShardingKey(const ShardingKeyRequest& req)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("getShardingKey", ::apache::thrift::protocol::T_CALL, cseqid);
 
   ToolService_getShardingKey_pargs args;
-  args.sk = &sk;
+  args.req = &req;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -253,6 +440,64 @@ void ToolServiceClient::recv_getShardingKey(ShardingKeyResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getShardingKey failed: unknown result");
 }
 
+void ToolServiceClient::getSnowFlake(SnowFlakeResponse& _return, const SnowFlakeRequest& req)
+{
+  send_getSnowFlake(req);
+  recv_getSnowFlake(_return);
+}
+
+void ToolServiceClient::send_getSnowFlake(const SnowFlakeRequest& req)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("getSnowFlake", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  ToolService_getSnowFlake_pargs args;
+  args.req = &req;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void ToolServiceClient::recv_getSnowFlake(SnowFlakeResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("getSnowFlake") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  ToolService_getSnowFlake_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getSnowFlake failed: unknown result");
+}
+
 bool ToolServiceProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
   ProcessMap::iterator pfn;
   pfn = processMap_.find(fname);
@@ -295,7 +540,7 @@ void ToolServiceProcessor::process_getShardingKey(int32_t seqid, ::apache::thrif
 
   ToolService_getShardingKey_result result;
   try {
-    iface_->getShardingKey(result.success, args.sk);
+    iface_->getShardingKey(result.success, args.req);
     result.__isset.success = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
@@ -326,6 +571,60 @@ void ToolServiceProcessor::process_getShardingKey(int32_t seqid, ::apache::thrif
   }
 }
 
+void ToolServiceProcessor::process_getSnowFlake(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("ToolService.getSnowFlake", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "ToolService.getSnowFlake");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "ToolService.getSnowFlake");
+  }
+
+  ToolService_getSnowFlake_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "ToolService.getSnowFlake", bytes);
+  }
+
+  ToolService_getSnowFlake_result result;
+  try {
+    iface_->getSnowFlake(result.success, args.req);
+    result.__isset.success = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "ToolService.getSnowFlake");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("getSnowFlake", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "ToolService.getSnowFlake");
+  }
+
+  oprot->writeMessageBegin("getSnowFlake", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "ToolService.getSnowFlake", bytes);
+  }
+}
+
 ::std::shared_ptr< ::apache::thrift::TProcessor > ToolServiceProcessorFactory::getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) {
   ::apache::thrift::ReleaseHandler< ToolServiceIfFactory > cleanup(handlerFactory_);
   ::std::shared_ptr< ToolServiceIf > handler(handlerFactory_->getHandler(connInfo), cleanup);
@@ -333,20 +632,20 @@ void ToolServiceProcessor::process_getShardingKey(int32_t seqid, ::apache::thrif
   return processor;
 }
 
-void ToolServiceConcurrentClient::getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& sk)
+void ToolServiceConcurrentClient::getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& req)
 {
-  int32_t seqid = send_getShardingKey(sk);
+  int32_t seqid = send_getShardingKey(req);
   recv_getShardingKey(_return, seqid);
 }
 
-int32_t ToolServiceConcurrentClient::send_getShardingKey(const ShardingKeyRequest& sk)
+int32_t ToolServiceConcurrentClient::send_getShardingKey(const ShardingKeyRequest& req)
 {
   int32_t cseqid = this->sync_->generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(this->sync_.get());
   oprot_->writeMessageBegin("getShardingKey", ::apache::thrift::protocol::T_CALL, cseqid);
 
   ToolService_getShardingKey_pargs args;
-  args.sk = &sk;
+  args.req = &req;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -408,6 +707,90 @@ void ToolServiceConcurrentClient::recv_getShardingKey(ShardingKeyResponse& _retu
       }
       // in a bad state, don't commit
       throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getShardingKey failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_->updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_->waitForWork(seqid);
+  } // end while(true)
+}
+
+void ToolServiceConcurrentClient::getSnowFlake(SnowFlakeResponse& _return, const SnowFlakeRequest& req)
+{
+  int32_t seqid = send_getSnowFlake(req);
+  recv_getSnowFlake(_return, seqid);
+}
+
+int32_t ToolServiceConcurrentClient::send_getSnowFlake(const SnowFlakeRequest& req)
+{
+  int32_t cseqid = this->sync_->generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(this->sync_.get());
+  oprot_->writeMessageBegin("getSnowFlake", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  ToolService_getSnowFlake_pargs args;
+  args.req = &req;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void ToolServiceConcurrentClient::recv_getSnowFlake(SnowFlakeResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(this->sync_.get(), seqid);
+
+  while(true) {
+    if(!this->sync_->getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("getSnowFlake") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      ToolService_getSnowFlake_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getSnowFlake failed: unknown result");
     }
     // seqid != rseqid
     this->sync_->updatePending(fname, mtype, rseqid);

@@ -13,7 +13,14 @@ namespace handler {
      * @param req ID
      * @param resp The response of this request
      */
-    void shardingKeyHandler(cinatra::request &req, cinatra::response &resp);
+    void shardingKeyHandler(cinatra::request& req, cinatra::response& resp);
+
+    /**
+     * Get the ID
+     * @param req
+     * @param resp
+     */
+    void snowFlakeHandler(cinatra::request& req,cinatra::response& resp);
 
 }
 

@@ -25,5 +25,11 @@ namespace dto{
     }
 
 
-
+    std::string SnowFlake::to_json() {
+        nlohmann::json j;
+        if(util::wrapError(*this,j)){
+            j["id"] = id;
+        }
+        return j.dump(4);
+    }
 }

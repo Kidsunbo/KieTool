@@ -12,7 +12,7 @@
 
 
 namespace handler {
-    void shardingKeyHandler(cinatra::request &req, cinatra::response &resp) {
+    void shardingKeyHandler(cinatra::request &req, cinatra::response &resp){
         try {
             SPDLOG_INFO("request from ip={}", util::getClientIp(req));
             auto id = req.get_query_value("id");
@@ -48,5 +48,31 @@ namespace handler {
         }
     }
 
+    void snowFlakeHandler(cinatra::request& req,cinatra::response& resp){
+        try {
+            SPDLOG_INFO("request from ip={}", util::getClientIp(req));
 
+            KieShop::tool::SnowFlakeResponse response;
+            KieShop::tool::SnowFlakeRequest request;
+            util::wrapBase(request.base);
+
+            {
+                std::lock_guard<std::mutex> lock(toolServiceMutex);
+                toolServiceClient.getSnowFlake(response, request);
+            }
+            dto::SnowFlake sf;
+            if (response.baseResp.statusCode == base::StatusCode::Fail) {
+                sf.errorNo = 10001;
+                sf.errorMsg = response.baseResp.statusMessage;
+                resp.set_status_and_content(cinatra::status_type::ok, sf.to_json(),cinatra::req_content_type::string);
+                return;
+            }
+            sf.id = std::to_string(response.id);
+            resp.set_status_and_content(cinatra::status_type::ok, sf.to_json(), cinatra::req_content_type::json);
+        } catch (std::exception& e) {
+            nlohmann::json j;
+            j["error"]=e.what();
+            resp.set_status_and_content(cinatra::status_type::ok,j.dump(4),cinatra::req_content_type::json);
+        }
+    }
 }

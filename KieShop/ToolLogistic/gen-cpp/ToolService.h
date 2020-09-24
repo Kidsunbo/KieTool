@@ -23,6 +23,7 @@ class ToolServiceIf {
  public:
   virtual ~ToolServiceIf() {}
   virtual void getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& req) = 0;
+  virtual void getSnowFlake(SnowFlakeResponse& _return, const SnowFlakeRequest& req) = 0;
 };
 
 class ToolServiceIfFactory {
@@ -53,6 +54,9 @@ class ToolServiceNull : virtual public ToolServiceIf {
  public:
   virtual ~ToolServiceNull() {}
   void getShardingKey(ShardingKeyResponse& /* _return */, const ShardingKeyRequest& /* req */) {
+    return;
+  }
+  void getSnowFlake(SnowFlakeResponse& /* _return */, const SnowFlakeRequest& /* req */) {
     return;
   }
 };
@@ -161,6 +165,110 @@ class ToolService_getShardingKey_presult {
 
 };
 
+typedef struct _ToolService_getSnowFlake_args__isset {
+  _ToolService_getSnowFlake_args__isset() : req(false) {}
+  bool req :1;
+} _ToolService_getSnowFlake_args__isset;
+
+class ToolService_getSnowFlake_args {
+ public:
+
+  ToolService_getSnowFlake_args(const ToolService_getSnowFlake_args&);
+  ToolService_getSnowFlake_args& operator=(const ToolService_getSnowFlake_args&);
+  ToolService_getSnowFlake_args() {
+  }
+
+  virtual ~ToolService_getSnowFlake_args() noexcept;
+  SnowFlakeRequest req;
+
+  _ToolService_getSnowFlake_args__isset __isset;
+
+  void __set_req(const SnowFlakeRequest& val);
+
+  bool operator == (const ToolService_getSnowFlake_args & rhs) const
+  {
+    if (!(req == rhs.req))
+      return false;
+    return true;
+  }
+  bool operator != (const ToolService_getSnowFlake_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ToolService_getSnowFlake_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class ToolService_getSnowFlake_pargs {
+ public:
+
+
+  virtual ~ToolService_getSnowFlake_pargs() noexcept;
+  const SnowFlakeRequest* req;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _ToolService_getSnowFlake_result__isset {
+  _ToolService_getSnowFlake_result__isset() : success(false) {}
+  bool success :1;
+} _ToolService_getSnowFlake_result__isset;
+
+class ToolService_getSnowFlake_result {
+ public:
+
+  ToolService_getSnowFlake_result(const ToolService_getSnowFlake_result&);
+  ToolService_getSnowFlake_result& operator=(const ToolService_getSnowFlake_result&);
+  ToolService_getSnowFlake_result() {
+  }
+
+  virtual ~ToolService_getSnowFlake_result() noexcept;
+  SnowFlakeResponse success;
+
+  _ToolService_getSnowFlake_result__isset __isset;
+
+  void __set_success(const SnowFlakeResponse& val);
+
+  bool operator == (const ToolService_getSnowFlake_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const ToolService_getSnowFlake_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ToolService_getSnowFlake_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _ToolService_getSnowFlake_presult__isset {
+  _ToolService_getSnowFlake_presult__isset() : success(false) {}
+  bool success :1;
+} _ToolService_getSnowFlake_presult__isset;
+
+class ToolService_getSnowFlake_presult {
+ public:
+
+
+  virtual ~ToolService_getSnowFlake_presult() noexcept;
+  SnowFlakeResponse* success;
+
+  _ToolService_getSnowFlake_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 class ToolServiceClient : virtual public ToolServiceIf {
  public:
   ToolServiceClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
@@ -189,6 +297,9 @@ class ToolServiceClient : virtual public ToolServiceIf {
   void getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& req);
   void send_getShardingKey(const ShardingKeyRequest& req);
   void recv_getShardingKey(ShardingKeyResponse& _return);
+  void getSnowFlake(SnowFlakeResponse& _return, const SnowFlakeRequest& req);
+  void send_getSnowFlake(const SnowFlakeRequest& req);
+  void recv_getSnowFlake(SnowFlakeResponse& _return);
  protected:
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -205,10 +316,12 @@ class ToolServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
   void process_getShardingKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getSnowFlake(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   ToolServiceProcessor(::std::shared_ptr<ToolServiceIf> iface) :
     iface_(iface) {
     processMap_["getShardingKey"] = &ToolServiceProcessor::process_getShardingKey;
+    processMap_["getSnowFlake"] = &ToolServiceProcessor::process_getSnowFlake;
   }
 
   virtual ~ToolServiceProcessor() {}
@@ -247,6 +360,16 @@ class ToolServiceMultiface : virtual public ToolServiceIf {
     return;
   }
 
+  void getSnowFlake(SnowFlakeResponse& _return, const SnowFlakeRequest& req) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getSnowFlake(_return, req);
+    }
+    ifaces_[i]->getSnowFlake(_return, req);
+    return;
+  }
+
 };
 
 // The 'concurrent' client is a thread safe client that correctly handles
@@ -282,6 +405,9 @@ class ToolServiceConcurrentClient : virtual public ToolServiceIf {
   void getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& req);
   int32_t send_getShardingKey(const ShardingKeyRequest& req);
   void recv_getShardingKey(ShardingKeyResponse& _return, const int32_t seqid);
+  void getSnowFlake(SnowFlakeResponse& _return, const SnowFlakeRequest& req);
+  int32_t send_getSnowFlake(const SnowFlakeRequest& req);
+  void recv_getSnowFlake(SnowFlakeResponse& _return, const int32_t seqid);
  protected:
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;

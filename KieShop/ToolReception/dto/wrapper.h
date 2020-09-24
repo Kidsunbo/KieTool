@@ -24,6 +24,11 @@ class Serialization{
         std::string orderId;
     };
 
+    CREATE_DTO(SnowFlake){
+        std::string to_json() override;
+        std::string id;
+    };
+
 }
 
 

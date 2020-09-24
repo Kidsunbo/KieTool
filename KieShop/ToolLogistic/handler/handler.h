@@ -14,4 +14,6 @@
  */
 KieShop::tool::ShardingKeyResponse getShardingKey(const KieShop::tool::ShardingKeyRequest& request);
 
+KieShop::tool::SnowFlakeResponse getSnowFlake(const KieShop::tool::SnowFlakeRequest& request);
+
 #endif //_TOOL_HANDLER_H

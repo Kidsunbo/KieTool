@@ -28,6 +28,10 @@ class ShardingKeyItem;
 
 class ShardingKeyResponse;
 
+class SnowFlakeRequest;
+
+class SnowFlakeResponse;
+
 typedef struct _ShardingKeyRequest__isset {
   _ShardingKeyRequest__isset() : id(false), base(false) {}
   bool id :1;
@@ -201,6 +205,96 @@ class ShardingKeyResponse : public virtual ::apache::thrift::TBase {
 void swap(ShardingKeyResponse &a, ShardingKeyResponse &b);
 
 std::ostream& operator<<(std::ostream& out, const ShardingKeyResponse& obj);
+
+typedef struct _SnowFlakeRequest__isset {
+  _SnowFlakeRequest__isset() : base(false) {}
+  bool base :1;
+} _SnowFlakeRequest__isset;
+
+class SnowFlakeRequest : public virtual ::apache::thrift::TBase {
+ public:
+
+  SnowFlakeRequest(const SnowFlakeRequest&);
+  SnowFlakeRequest& operator=(const SnowFlakeRequest&);
+  SnowFlakeRequest() {
+  }
+
+  virtual ~SnowFlakeRequest() noexcept;
+   ::base::Base base;
+
+  _SnowFlakeRequest__isset __isset;
+
+  void __set_base(const  ::base::Base& val);
+
+  bool operator == (const SnowFlakeRequest & rhs) const
+  {
+    if (!(base == rhs.base))
+      return false;
+    return true;
+  }
+  bool operator != (const SnowFlakeRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SnowFlakeRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SnowFlakeRequest &a, SnowFlakeRequest &b);
+
+std::ostream& operator<<(std::ostream& out, const SnowFlakeRequest& obj);
+
+typedef struct _SnowFlakeResponse__isset {
+  _SnowFlakeResponse__isset() : id(false), baseResp(false) {}
+  bool id :1;
+  bool baseResp :1;
+} _SnowFlakeResponse__isset;
+
+class SnowFlakeResponse : public virtual ::apache::thrift::TBase {
+ public:
+
+  SnowFlakeResponse(const SnowFlakeResponse&);
+  SnowFlakeResponse& operator=(const SnowFlakeResponse&);
+  SnowFlakeResponse() : id(0) {
+  }
+
+  virtual ~SnowFlakeResponse() noexcept;
+  int64_t id;
+   ::base::BaseResp baseResp;
+
+  _SnowFlakeResponse__isset __isset;
+
+  void __set_id(const int64_t val);
+
+  void __set_baseResp(const  ::base::BaseResp& val);
+
+  bool operator == (const SnowFlakeResponse & rhs) const
+  {
+    if (!(id == rhs.id))
+      return false;
+    if (!(baseResp == rhs.baseResp))
+      return false;
+    return true;
+  }
+  bool operator != (const SnowFlakeResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SnowFlakeResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SnowFlakeResponse &a, SnowFlakeResponse &b);
+
+std::ostream& operator<<(std::ostream& out, const SnowFlakeResponse& obj);
 
 }} // namespace
 
