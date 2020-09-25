@@ -135,7 +135,7 @@ static std::atomic_int64_t snowFlakeId = 0;
 static unsigned long long lastTimeStamp = 0;
 
 KieShop::tool::SnowFlakeResponse getSnowFlake(const KieShop::tool::SnowFlakeRequest& sk){
-    SPDLOG_INFO("logId={} func={} sk={}", sk.base.logId, __FUNCTION__, string_util::toString(sk));
+//    SPDLOG_INFO("logId={} func={} sk={}", sk.base.logId, __FUNCTION__, string_util::toString(sk));
     SnowFlakeResponse resp;
     auto current = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
     if(current!=lastTimeStamp){
@@ -144,27 +144,19 @@ KieShop::tool::SnowFlakeResponse getSnowFlake(const KieShop::tool::SnowFlakeRequ
     }
     uint64 id = 0;
     //Datetime part
-    uint64 temp = 0;
-    temp|=static_cast<uint64>(current%dateTimeMaxCount);
-    temp<<=(dataCenterNumberShiftBits+machineNumberShiftBits+randomNumberShiftBits);
-    id |=temp;
+    id|=static_cast<uint64>(static_cast<uint64>(current)&dateTimeMask);
 
     //DataCenter Part
-    temp =0;
-    temp|=static_cast<uint>(DataCenterID%dataCenterNumberMaxCount);
-    temp<<=(machineNumberShiftBits+randomNumberShiftBits);
-    id |=temp;
+    id<<=dataCenterNumberShiftBits;
+    id|=static_cast<uint>(static_cast<uint>(DataCenterID)&dataCenterNumberMask);
 
     //Machine Part
-    temp=0;
-    temp |= static_cast<uint>(MachineID%machineNumberMaxCount);
-    temp<<=(randomNumberShiftBits);
-    id |=temp;
+    id<<=machineNumberShiftBits;
+    id |= static_cast<uint>(static_cast<uint>(MachineID)&machineNumberMask);
 
     //Random Number Part
-    temp=0;
-    temp |= static_cast<uint>(snowFlakeId%randomNumberMaxCount);
-    id |= temp;
+    id<<=randomNumberShiftBits;
+    id |= static_cast<uint>(snowFlakeId&randomNumberMask);
 
     snowFlakeId++;
     resp.id=id;

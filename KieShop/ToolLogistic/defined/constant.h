@@ -27,13 +27,13 @@ static const unsigned int ShardingCountShopID=1001;
 
 //Snow Flake
 static const unsigned int randomNumberShiftBits = 12;
-static const unsigned int randomNumberMaxCount = (1u<<randomNumberShiftBits);
+static const unsigned int randomNumberMask = (1u<<randomNumberShiftBits)-1;
 static const unsigned int machineNumberShiftBits = 5;
-static const unsigned int machineNumberMaxCount = (1u<<machineNumberShiftBits);
+static const unsigned int machineNumberMask = (1u<<machineNumberShiftBits)-1;
 static const unsigned int dataCenterNumberShiftBits = 5;
-static const unsigned int dataCenterNumberMaxCount = (1u<<dataCenterNumberShiftBits);
+static const unsigned int dataCenterNumberMask = (1u<<dataCenterNumberShiftBits)-1;
 static const unsigned int dateTimeShiftBits = 41;
-static const unsigned long long dateTimeMaxCount = (1ull<<dateTimeShiftBits);
+static const unsigned long long dateTimeMask = (1ull<<dateTimeShiftBits)-1;
 
 
 
