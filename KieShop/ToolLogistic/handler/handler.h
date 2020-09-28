@@ -2,8 +2,8 @@
 // Created by sunbo on 2020/8/17.
 //
 
-#ifndef _TOOL_HANDLER_H
-#define _TOOL_HANDLER_H
+#ifndef _KIE_SHOP_TOOL_LOGISTIC_HANDLER_H
+#define _KIE_SHOP_TOOL_LOGISTIC_HANDLER_H
 
 #include "../gen-cpp/tool_logistic_types.h"
 
@@ -16,4 +16,4 @@ KieShop::tool::ShardingKeyResponse getShardingKey(const KieShop::tool::ShardingK
 
 KieShop::tool::SnowFlakeResponse getSnowFlake(const KieShop::tool::SnowFlakeRequest& request);
 
-#endif //_TOOL_HANDLER_H
+#endif //_KIE_SHOP_TOOL_LOGISTIC_HANDLER_H

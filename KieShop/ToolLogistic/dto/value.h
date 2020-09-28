@@ -2,8 +2,8 @@
 // Created by sunbo on 2020/8/17.
 //
 
-#ifndef TOOL_VALUE_H
-#define TOOL_VALUE_H
+#ifndef KIE_SHOP_TOOL_LOGISTIC_VALUE_H
+#define KIE_SHOP_TOOL_LOGISTIC_VALUE_H
 #include "../defined/constant.h"
 
 
@@ -15,4 +15,4 @@ struct OrderId{
     uint32 shard_key;
 };
 
-#endif //TOOL_VALUE_H
+#endif //KIE_SHOP_TOOL_LOGISTIC_VALUE_H

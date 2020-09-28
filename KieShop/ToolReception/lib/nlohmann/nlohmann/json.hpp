@@ -10835,7 +10835,7 @@ class iter_impl
     /// The C++ Standard has never required user-defined iterators to derive from std::iterator.
     /// A user-defined iterator should provide publicly accessible typedefs named
     /// iterator_category, value_type, difference_type, pointer, and reference.
-    /// Note that value_type is required to be non-const, even for constant iterators.
+    /// Note that value_type is required to be non-const, even for define iterators.
     using iterator_category = std::bidirectional_iterator_tag;
 
     /// the type of the values when the iterator is dereferenced
@@ -11655,7 +11655,7 @@ class json_pointer
 
     @liveexample{The example shows the usage of `operator/=`.,json_pointer__operator_add}
 
-    @complexity Amortized constant.
+    @complexity Amortized define.
 
     @sa @ref operator/=(const json_pointer&) to append a JSON pointer
     @sa @ref operator/=(std::size_t) to append an array index
@@ -11677,7 +11677,7 @@ class json_pointer
 
     @liveexample{The example shows the usage of `operator/=`.,json_pointer__operator_add}
 
-    @complexity Amortized constant.
+    @complexity Amortized define.
 
     @sa @ref operator/=(const json_pointer&) to append a JSON pointer
     @sa @ref operator/=(std::string) to append a reference token
@@ -11828,7 +11828,7 @@ class json_pointer
 
     @param[in] token  token to add
 
-    @complexity Amortized constant.
+    @complexity Amortized define.
 
     @liveexample{The example shows the result of `push_back` for different
     JSON Pointers.,json_pointer__push_back}
@@ -20515,10 +20515,10 @@ class basic_json
     out of range"`
 
     @complexity The complexity depends on the type:
-    - objects: amortized constant
+    - objects: amortized define
     - arrays: linear in distance between @a pos and the end of the container
     - strings and binary: linear in the length of the member
-    - other types: constant
+    - other types: define
 
     @liveexample{The example shows the result of `erase()` for different JSON
     types.,erase__IteratorType}
@@ -20632,7 +20632,7 @@ class basic_json
     - arrays: linear in the distance between @a first and @a last, plus linear
       in the distance between @a last and end of the container
     - strings and binary: linear in the length of the member
-    - other types: constant
+    - other types: define
 
     @liveexample{The example shows the result of `erase()` for different JSON
     types.,erase__IteratorType_IteratorType}
@@ -20976,7 +20976,7 @@ class basic_json
     @requirement This function helps `basic_json` satisfying the
     [Container](https://en.cppreference.com/w/cpp/named_req/Container)
     requirements:
-    - The complexity is constant.
+    - The complexity is define.
 
     @liveexample{The following code shows an example for `begin()`.,begin}
 
@@ -21015,7 +21015,7 @@ class basic_json
     @requirement This function helps `basic_json` satisfying the
     [Container](https://en.cppreference.com/w/cpp/named_req/Container)
     requirements:
-    - The complexity is constant.
+    - The complexity is define.
     - Has the semantics of `const_cast<const basic_json&>(*this).begin()`.
 
     @liveexample{The following code shows an example for `cbegin()`.,cbegin}
@@ -21047,7 +21047,7 @@ class basic_json
     @requirement This function helps `basic_json` satisfying the
     [Container](https://en.cppreference.com/w/cpp/named_req/Container)
     requirements:
-    - The complexity is constant.
+    - The complexity is define.
 
     @liveexample{The following code shows an example for `end()`.,end}
 
@@ -21086,7 +21086,7 @@ class basic_json
     @requirement This function helps `basic_json` satisfying the
     [Container](https://en.cppreference.com/w/cpp/named_req/Container)
     requirements:
-    - The complexity is constant.
+    - The complexity is define.
     - Has the semantics of `const_cast<const basic_json&>(*this).end()`.
 
     @liveexample{The following code shows an example for `cend()`.,cend}
@@ -21116,7 +21116,7 @@ class basic_json
     @requirement This function helps `basic_json` satisfying the
     [ReversibleContainer](https://en.cppreference.com/w/cpp/named_req/ReversibleContainer)
     requirements:
-    - The complexity is constant.
+    - The complexity is define.
     - Has the semantics of `reverse_iterator(end())`.
 
     @liveexample{The following code shows an example for `rbegin()`.,rbegin}
@@ -21153,7 +21153,7 @@ class basic_json
     @requirement This function helps `basic_json` satisfying the
     [ReversibleContainer](https://en.cppreference.com/w/cpp/named_req/ReversibleContainer)
     requirements:
-    - The complexity is constant.
+    - The complexity is define.
     - Has the semantics of `reverse_iterator(begin())`.
 
     @liveexample{The following code shows an example for `rend()`.,rend}
@@ -21190,7 +21190,7 @@ class basic_json
     @requirement This function helps `basic_json` satisfying the
     [ReversibleContainer](https://en.cppreference.com/w/cpp/named_req/ReversibleContainer)
     requirements:
-    - The complexity is constant.
+    - The complexity is define.
     - Has the semantics of `const_cast<const basic_json&>(*this).rbegin()`.
 
     @liveexample{The following code shows an example for `crbegin()`.,crbegin}
@@ -21219,7 +21219,7 @@ class basic_json
     @requirement This function helps `basic_json` satisfying the
     [ReversibleContainer](https://en.cppreference.com/w/cpp/named_req/ReversibleContainer)
     requirements:
-    - The complexity is constant.
+    - The complexity is define.
     - Has the semantics of `const_cast<const basic_json&>(*this).rend()`.
 
     @liveexample{The following code shows an example for `crend()`.,crend}
@@ -21420,7 +21420,7 @@ class basic_json
     object contains any elements.,empty}
 
     @complexity Constant, as long as @ref array_t and @ref object_t satisfy
-    the Container concept; that is, their `empty()` functions have constant
+    the Container concept; that is, their `empty()` functions have define
     complexity.
 
     @iterators No changes.
@@ -21434,7 +21434,7 @@ class basic_json
     @requirement This function helps `basic_json` satisfying the
     [Container](https://en.cppreference.com/w/cpp/named_req/Container)
     requirements:
-    - The complexity is constant.
+    - The complexity is define.
     - Has the semantics of `begin() == end()`.
 
     @sa @ref size() -- returns the number of elements
@@ -21492,7 +21492,7 @@ class basic_json
     types.,size}
 
     @complexity Constant, as long as @ref array_t and @ref object_t satisfy
-    the Container concept; that is, their size() functions have constant
+    the Container concept; that is, their size() functions have define
     complexity.
 
     @iterators No changes.
@@ -21506,7 +21506,7 @@ class basic_json
     @requirement This function helps `basic_json` satisfying the
     [Container](https://en.cppreference.com/w/cpp/named_req/Container)
     requirements:
-    - The complexity is constant.
+    - The complexity is define.
     - Has the semantics of `std::distance(begin(), end())`.
 
     @sa @ref empty() -- checks whether the container is empty
@@ -21567,7 +21567,7 @@ class basic_json
     types. Note the output is implementation specific.,max_size}
 
     @complexity Constant, as long as @ref array_t and @ref object_t satisfy
-    the Container concept; that is, their `max_size()` functions have constant
+    the Container concept; that is, their `max_size()` functions have define
     complexity.
 
     @iterators No changes.
@@ -21577,7 +21577,7 @@ class basic_json
     @requirement This function helps `basic_json` satisfying the
     [Container](https://en.cppreference.com/w/cpp/named_req/Container)
     requirements:
-    - The complexity is constant.
+    - The complexity is define.
     - Has the semantics of returning `b.size()` where `b` is the largest
       possible JSON value.
 
@@ -21725,7 +21725,7 @@ class basic_json
     @throw type_error.308 when called on a type other than JSON array or
     null; example: `"cannot use push_back() with number"`
 
-    @complexity Amortized constant.
+    @complexity Amortized define.
 
     @liveexample{The example shows how `push_back()` and `+=` can be used to
     add elements to a JSON array. Note how the `null` value was silently
@@ -21912,7 +21912,7 @@ class basic_json
     @throw type_error.311 when called on a type other than JSON array or
     null; example: `"cannot use emplace_back() with number"`
 
-    @complexity Amortized constant.
+    @complexity Amortized define.
 
     @liveexample{The example shows how `push_back()` can be used to add
     elements to a JSON array. Note how the `null` value was silently converted

@@ -10,12 +10,12 @@ find_library(THRIFT NAMES libthrift.a HINTS /usr/local/lib)
 aux_source_directory(gen-cpp thrift-gen)
 aux_source_directory(handler handler)
 aux_source_directory(dto dto)
-aux_source_directory(util util)
 aux_source_directory(defined constant)
 
 add_executable(KieShop_tool_logistic main.cpp ${thrift-gen} ${handler} ${dto} ${util} ${constant})
 target_include_directories(KieShop_tool_logistic PUBLIC /usr/local/include
         /Users/sunbo/Downloads/FrameWork/boost_1_73_0
+        ../ToolCommon/utility # common utility
         lib/spdlog/include)
 target_link_libraries(KieShop_tool_logistic PUBLIC ${THRIFT} pthread)
 install(TARGETS KieShop_tool_logistic DESTINATION /root/bin/Tool)

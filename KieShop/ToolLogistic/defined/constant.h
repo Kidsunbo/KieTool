@@ -2,8 +2,8 @@
 // Created by sunbo on 2020/8/17.
 //
 
-#ifndef TOOL_CONSTANT_H
-#define TOOL_CONSTANT_H
+#ifndef KIE_SHOP_TOOL_LOGISTIC_CONSTANT_H
+#define KIE_SHOP_TOOL_LOGISTIC_CONSTANT_H
 
 
 //Defined Value
@@ -42,4 +42,4 @@ extern int MachineID;
 extern int DataCenterID;
 
 
-#endif //TOOL_CONSTANT_H
+#endif //KIE_SHOP_TOOL_LOGISTIC_CONSTANT_H

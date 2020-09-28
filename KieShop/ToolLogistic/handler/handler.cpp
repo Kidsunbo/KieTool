@@ -7,7 +7,7 @@
 #include <memory>
 #include <boost/uuid/detail/sha1.hpp>
 #include <spdlog/spdlog.h>
-#include "../util/string_util.h"
+#include <string_util.h>
 #include <cstdlib>
 
 #ifdef __linux__
