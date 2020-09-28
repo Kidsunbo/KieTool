@@ -131,16 +131,22 @@ ShardingKeyResponse getShardingKey(const ShardingKeyRequest& sk) {
 
 /*********************Snow Flake***********************/
 
-static std::atomic_int64_t snowFlakeId = 0;
+static std::mutex lockSF;
+static unsigned int snowFlakeId = 0;
 static unsigned long long lastTimeStamp = 0;
 
 KieShop::tool::SnowFlakeResponse getSnowFlake(const KieShop::tool::SnowFlakeRequest& sk){
-//    SPDLOG_INFO("logId={} func={} sk={}", sk.base.logId, __FUNCTION__, string_util::toString(sk));
+    SPDLOG_INFO("logId={} func={} sk={}", sk.base.logId, __FUNCTION__, string_util::toString(sk));
     SnowFlakeResponse resp;
     auto current = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
-    if(current!=lastTimeStamp){
-        snowFlakeId=0;
-        lastTimeStamp=current;
+    {
+        std::lock_guard<std::mutex> locker(lockSF);
+        if (current != lastTimeStamp) {
+            snowFlakeId = 0;
+            lastTimeStamp = current;
+        }else{
+            snowFlakeId++;
+        }
     }
     uint64 id = 0;
     //Datetime part
@@ -158,7 +164,6 @@ KieShop::tool::SnowFlakeResponse getSnowFlake(const KieShop::tool::SnowFlakeRequ
     id<<=randomNumberShiftBits;
     id |= static_cast<uint>(snowFlakeId&randomNumberMask);
 
-    snowFlakeId++;
     resp.id=id;
     return resp;
 }
