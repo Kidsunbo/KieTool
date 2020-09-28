@@ -1,7 +1,7 @@
-namespace cpp KieShop.tool
-namespace go KieShop.tool
-namespace java KieShop.tool
-namespace py KieShop.tool
+namespace cpp KieShop.tool_logistic
+namespace go KieShop.tool_logistic
+namespace java KieShop.tool_logistic
+namespace py KieShop.tool_logistic
 
 include "../base.thrift"
 
