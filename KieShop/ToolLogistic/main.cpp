@@ -7,8 +7,8 @@
 void runServer(){
 
     int port = 9090;
-    shared_ptr<ToolServiceHandler> handler(new ToolServiceHandler());
-    shared_ptr<TProcessor> processor(new ToolServiceProcessor(handler));
+    shared_ptr<ToolLogisticHandler> handler(new ToolLogisticHandler());
+    shared_ptr<TProcessor> processor(new ToolLogisticProcessor(handler));
     shared_ptr<TProtocolFactory> protocolFactory(new TBinaryProtocolFactory());
     shared_ptr<TServerTransport> serverTransport(new TServerSocket(port));
     shared_ptr<TTransportFactory> transportFactory(new TBufferedTransportFactory());

@@ -4,8 +4,8 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef tool_TYPES_H
-#define tool_TYPES_H
+#ifndef tool_logistic_TYPES_H
+#define tool_logistic_TYPES_H
 
 #include <iosfwd>
 

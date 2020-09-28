@@ -5,7 +5,7 @@
 #ifndef _TOOL_HANDLER_H
 #define _TOOL_HANDLER_H
 
-#include "../gen-cpp/tool_types.h"
+#include "../gen-cpp/tool_logistic_types.h"
 
 /**
  * The handler function that calculates all the sharding key

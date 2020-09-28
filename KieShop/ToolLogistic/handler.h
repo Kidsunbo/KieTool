@@ -6,7 +6,7 @@
 #define TOOL_HANDLER_H
 
 
-#include "gen-cpp/ToolService.h"
+#include "gen-cpp/ToolLogistic.h"
 #include <thrift/protocol/TBinaryProtocol.h>
 #include <thrift/server/TSimpleServer.h>
 #include <thrift/server/TThreadedServer.h>
@@ -27,7 +27,7 @@ using namespace ::apache::thrift::concurrency;
 using namespace std;
 using namespace KieShop::tool;
 
-class ToolServiceHandler: public ToolServiceIf{
+class ToolLogisticHandler: public ToolLogisticIf{
 public:
     void getShardingKey(ShardingKeyResponse &_return, const ShardingKeyRequest &req) override{
         _return = ::getShardingKey(req);
