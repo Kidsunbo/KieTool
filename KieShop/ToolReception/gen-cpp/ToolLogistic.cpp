@@ -4,16 +4,16 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#include "ToolService.h"
+#include "ToolLogistic.h"
 
 namespace KieShop { namespace tool {
 
 
-ToolService_getShardingKey_args::~ToolService_getShardingKey_args() noexcept {
+ToolLogistic_getShardingKey_args::~ToolLogistic_getShardingKey_args() noexcept {
 }
 
 
-uint32_t ToolService_getShardingKey_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ToolLogistic_getShardingKey_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -54,10 +54,10 @@ uint32_t ToolService_getShardingKey_args::read(::apache::thrift::protocol::TProt
   return xfer;
 }
 
-uint32_t ToolService_getShardingKey_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ToolLogistic_getShardingKey_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ToolService_getShardingKey_args");
+  xfer += oprot->writeStructBegin("ToolLogistic_getShardingKey_args");
 
   xfer += oprot->writeFieldBegin("req", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->req.write(oprot);
@@ -69,14 +69,14 @@ uint32_t ToolService_getShardingKey_args::write(::apache::thrift::protocol::TPro
 }
 
 
-ToolService_getShardingKey_pargs::~ToolService_getShardingKey_pargs() noexcept {
+ToolLogistic_getShardingKey_pargs::~ToolLogistic_getShardingKey_pargs() noexcept {
 }
 
 
-uint32_t ToolService_getShardingKey_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ToolLogistic_getShardingKey_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ToolService_getShardingKey_pargs");
+  xfer += oprot->writeStructBegin("ToolLogistic_getShardingKey_pargs");
 
   xfer += oprot->writeFieldBegin("req", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->req)).write(oprot);
@@ -88,11 +88,11 @@ uint32_t ToolService_getShardingKey_pargs::write(::apache::thrift::protocol::TPr
 }
 
 
-ToolService_getShardingKey_result::~ToolService_getShardingKey_result() noexcept {
+ToolLogistic_getShardingKey_result::~ToolLogistic_getShardingKey_result() noexcept {
 }
 
 
-uint32_t ToolService_getShardingKey_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ToolLogistic_getShardingKey_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -133,11 +133,11 @@ uint32_t ToolService_getShardingKey_result::read(::apache::thrift::protocol::TPr
   return xfer;
 }
 
-uint32_t ToolService_getShardingKey_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ToolLogistic_getShardingKey_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("ToolService_getShardingKey_result");
+  xfer += oprot->writeStructBegin("ToolLogistic_getShardingKey_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -150,11 +150,11 @@ uint32_t ToolService_getShardingKey_result::write(::apache::thrift::protocol::TP
 }
 
 
-ToolService_getShardingKey_presult::~ToolService_getShardingKey_presult() noexcept {
+ToolLogistic_getShardingKey_presult::~ToolLogistic_getShardingKey_presult() noexcept {
 }
 
 
-uint32_t ToolService_getShardingKey_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ToolLogistic_getShardingKey_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -196,11 +196,11 @@ uint32_t ToolService_getShardingKey_presult::read(::apache::thrift::protocol::TP
 }
 
 
-ToolService_getSnowFlake_args::~ToolService_getSnowFlake_args() noexcept {
+ToolLogistic_getSnowFlake_args::~ToolLogistic_getSnowFlake_args() noexcept {
 }
 
 
-uint32_t ToolService_getSnowFlake_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ToolLogistic_getSnowFlake_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -241,10 +241,10 @@ uint32_t ToolService_getSnowFlake_args::read(::apache::thrift::protocol::TProtoc
   return xfer;
 }
 
-uint32_t ToolService_getSnowFlake_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ToolLogistic_getSnowFlake_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ToolService_getSnowFlake_args");
+  xfer += oprot->writeStructBegin("ToolLogistic_getSnowFlake_args");
 
   xfer += oprot->writeFieldBegin("req", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->req.write(oprot);
@@ -256,14 +256,14 @@ uint32_t ToolService_getSnowFlake_args::write(::apache::thrift::protocol::TProto
 }
 
 
-ToolService_getSnowFlake_pargs::~ToolService_getSnowFlake_pargs() noexcept {
+ToolLogistic_getSnowFlake_pargs::~ToolLogistic_getSnowFlake_pargs() noexcept {
 }
 
 
-uint32_t ToolService_getSnowFlake_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ToolLogistic_getSnowFlake_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ToolService_getSnowFlake_pargs");
+  xfer += oprot->writeStructBegin("ToolLogistic_getSnowFlake_pargs");
 
   xfer += oprot->writeFieldBegin("req", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->req)).write(oprot);
@@ -275,11 +275,11 @@ uint32_t ToolService_getSnowFlake_pargs::write(::apache::thrift::protocol::TProt
 }
 
 
-ToolService_getSnowFlake_result::~ToolService_getSnowFlake_result() noexcept {
+ToolLogistic_getSnowFlake_result::~ToolLogistic_getSnowFlake_result() noexcept {
 }
 
 
-uint32_t ToolService_getSnowFlake_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ToolLogistic_getSnowFlake_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -320,11 +320,11 @@ uint32_t ToolService_getSnowFlake_result::read(::apache::thrift::protocol::TProt
   return xfer;
 }
 
-uint32_t ToolService_getSnowFlake_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ToolLogistic_getSnowFlake_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("ToolService_getSnowFlake_result");
+  xfer += oprot->writeStructBegin("ToolLogistic_getSnowFlake_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -337,11 +337,11 @@ uint32_t ToolService_getSnowFlake_result::write(::apache::thrift::protocol::TPro
 }
 
 
-ToolService_getSnowFlake_presult::~ToolService_getSnowFlake_presult() noexcept {
+ToolLogistic_getSnowFlake_presult::~ToolLogistic_getSnowFlake_presult() noexcept {
 }
 
 
-uint32_t ToolService_getSnowFlake_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ToolLogistic_getSnowFlake_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -382,18 +382,18 @@ uint32_t ToolService_getSnowFlake_presult::read(::apache::thrift::protocol::TPro
   return xfer;
 }
 
-void ToolServiceClient::getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& req)
+void ToolLogisticClient::getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& req)
 {
   send_getShardingKey(req);
   recv_getShardingKey(_return);
 }
 
-void ToolServiceClient::send_getShardingKey(const ShardingKeyRequest& req)
+void ToolLogisticClient::send_getShardingKey(const ShardingKeyRequest& req)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("getShardingKey", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  ToolService_getShardingKey_pargs args;
+  ToolLogistic_getShardingKey_pargs args;
   args.req = &req;
   args.write(oprot_);
 
@@ -402,7 +402,7 @@ void ToolServiceClient::send_getShardingKey(const ShardingKeyRequest& req)
   oprot_->getTransport()->flush();
 }
 
-void ToolServiceClient::recv_getShardingKey(ShardingKeyResponse& _return)
+void ToolLogisticClient::recv_getShardingKey(ShardingKeyResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -427,7 +427,7 @@ void ToolServiceClient::recv_getShardingKey(ShardingKeyResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  ToolService_getShardingKey_presult result;
+  ToolLogistic_getShardingKey_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -440,18 +440,18 @@ void ToolServiceClient::recv_getShardingKey(ShardingKeyResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getShardingKey failed: unknown result");
 }
 
-void ToolServiceClient::getSnowFlake(SnowFlakeResponse& _return, const SnowFlakeRequest& req)
+void ToolLogisticClient::getSnowFlake(SnowFlakeResponse& _return, const SnowFlakeRequest& req)
 {
   send_getSnowFlake(req);
   recv_getSnowFlake(_return);
 }
 
-void ToolServiceClient::send_getSnowFlake(const SnowFlakeRequest& req)
+void ToolLogisticClient::send_getSnowFlake(const SnowFlakeRequest& req)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("getSnowFlake", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  ToolService_getSnowFlake_pargs args;
+  ToolLogistic_getSnowFlake_pargs args;
   args.req = &req;
   args.write(oprot_);
 
@@ -460,7 +460,7 @@ void ToolServiceClient::send_getSnowFlake(const SnowFlakeRequest& req)
   oprot_->getTransport()->flush();
 }
 
-void ToolServiceClient::recv_getSnowFlake(SnowFlakeResponse& _return)
+void ToolLogisticClient::recv_getSnowFlake(SnowFlakeResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -485,7 +485,7 @@ void ToolServiceClient::recv_getSnowFlake(SnowFlakeResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  ToolService_getSnowFlake_presult result;
+  ToolLogistic_getSnowFlake_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -498,7 +498,7 @@ void ToolServiceClient::recv_getSnowFlake(SnowFlakeResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getSnowFlake failed: unknown result");
 }
 
-bool ToolServiceProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
+bool ToolLogisticProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
   ProcessMap::iterator pfn;
   pfn = processMap_.find(fname);
   if (pfn == processMap_.end()) {
@@ -517,34 +517,34 @@ bool ToolServiceProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* i
   return true;
 }
 
-void ToolServiceProcessor::process_getShardingKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void ToolLogisticProcessor::process_getShardingKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("ToolService.getShardingKey", callContext);
+    ctx = this->eventHandler_->getContext("ToolLogistic.getShardingKey", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "ToolService.getShardingKey");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "ToolLogistic.getShardingKey");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "ToolService.getShardingKey");
+    this->eventHandler_->preRead(ctx, "ToolLogistic.getShardingKey");
   }
 
-  ToolService_getShardingKey_args args;
+  ToolLogistic_getShardingKey_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "ToolService.getShardingKey", bytes);
+    this->eventHandler_->postRead(ctx, "ToolLogistic.getShardingKey", bytes);
   }
 
-  ToolService_getShardingKey_result result;
+  ToolLogistic_getShardingKey_result result;
   try {
     iface_->getShardingKey(result.success, args.req);
     result.__isset.success = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "ToolService.getShardingKey");
+      this->eventHandler_->handlerError(ctx, "ToolLogistic.getShardingKey");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -557,7 +557,7 @@ void ToolServiceProcessor::process_getShardingKey(int32_t seqid, ::apache::thrif
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "ToolService.getShardingKey");
+    this->eventHandler_->preWrite(ctx, "ToolLogistic.getShardingKey");
   }
 
   oprot->writeMessageBegin("getShardingKey", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -567,38 +567,38 @@ void ToolServiceProcessor::process_getShardingKey(int32_t seqid, ::apache::thrif
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "ToolService.getShardingKey", bytes);
+    this->eventHandler_->postWrite(ctx, "ToolLogistic.getShardingKey", bytes);
   }
 }
 
-void ToolServiceProcessor::process_getSnowFlake(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void ToolLogisticProcessor::process_getSnowFlake(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("ToolService.getSnowFlake", callContext);
+    ctx = this->eventHandler_->getContext("ToolLogistic.getSnowFlake", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "ToolService.getSnowFlake");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "ToolLogistic.getSnowFlake");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "ToolService.getSnowFlake");
+    this->eventHandler_->preRead(ctx, "ToolLogistic.getSnowFlake");
   }
 
-  ToolService_getSnowFlake_args args;
+  ToolLogistic_getSnowFlake_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "ToolService.getSnowFlake", bytes);
+    this->eventHandler_->postRead(ctx, "ToolLogistic.getSnowFlake", bytes);
   }
 
-  ToolService_getSnowFlake_result result;
+  ToolLogistic_getSnowFlake_result result;
   try {
     iface_->getSnowFlake(result.success, args.req);
     result.__isset.success = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "ToolService.getSnowFlake");
+      this->eventHandler_->handlerError(ctx, "ToolLogistic.getSnowFlake");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -611,7 +611,7 @@ void ToolServiceProcessor::process_getSnowFlake(int32_t seqid, ::apache::thrift:
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "ToolService.getSnowFlake");
+    this->eventHandler_->preWrite(ctx, "ToolLogistic.getSnowFlake");
   }
 
   oprot->writeMessageBegin("getSnowFlake", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -621,30 +621,30 @@ void ToolServiceProcessor::process_getSnowFlake(int32_t seqid, ::apache::thrift:
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "ToolService.getSnowFlake", bytes);
+    this->eventHandler_->postWrite(ctx, "ToolLogistic.getSnowFlake", bytes);
   }
 }
 
-::std::shared_ptr< ::apache::thrift::TProcessor > ToolServiceProcessorFactory::getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) {
-  ::apache::thrift::ReleaseHandler< ToolServiceIfFactory > cleanup(handlerFactory_);
-  ::std::shared_ptr< ToolServiceIf > handler(handlerFactory_->getHandler(connInfo), cleanup);
-  ::std::shared_ptr< ::apache::thrift::TProcessor > processor(new ToolServiceProcessor(handler));
+::std::shared_ptr< ::apache::thrift::TProcessor > ToolLogisticProcessorFactory::getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) {
+  ::apache::thrift::ReleaseHandler< ToolLogisticIfFactory > cleanup(handlerFactory_);
+  ::std::shared_ptr< ToolLogisticIf > handler(handlerFactory_->getHandler(connInfo), cleanup);
+  ::std::shared_ptr< ::apache::thrift::TProcessor > processor(new ToolLogisticProcessor(handler));
   return processor;
 }
 
-void ToolServiceConcurrentClient::getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& req)
+void ToolLogisticConcurrentClient::getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& req)
 {
   int32_t seqid = send_getShardingKey(req);
   recv_getShardingKey(_return, seqid);
 }
 
-int32_t ToolServiceConcurrentClient::send_getShardingKey(const ShardingKeyRequest& req)
+int32_t ToolLogisticConcurrentClient::send_getShardingKey(const ShardingKeyRequest& req)
 {
   int32_t cseqid = this->sync_->generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(this->sync_.get());
   oprot_->writeMessageBegin("getShardingKey", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  ToolService_getShardingKey_pargs args;
+  ToolLogistic_getShardingKey_pargs args;
   args.req = &req;
   args.write(oprot_);
 
@@ -656,7 +656,7 @@ int32_t ToolServiceConcurrentClient::send_getShardingKey(const ShardingKeyReques
   return cseqid;
 }
 
-void ToolServiceConcurrentClient::recv_getShardingKey(ShardingKeyResponse& _return, const int32_t seqid)
+void ToolLogisticConcurrentClient::recv_getShardingKey(ShardingKeyResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -694,7 +694,7 @@ void ToolServiceConcurrentClient::recv_getShardingKey(ShardingKeyResponse& _retu
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      ToolService_getShardingKey_presult result;
+      ToolLogistic_getShardingKey_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -716,19 +716,19 @@ void ToolServiceConcurrentClient::recv_getShardingKey(ShardingKeyResponse& _retu
   } // end while(true)
 }
 
-void ToolServiceConcurrentClient::getSnowFlake(SnowFlakeResponse& _return, const SnowFlakeRequest& req)
+void ToolLogisticConcurrentClient::getSnowFlake(SnowFlakeResponse& _return, const SnowFlakeRequest& req)
 {
   int32_t seqid = send_getSnowFlake(req);
   recv_getSnowFlake(_return, seqid);
 }
 
-int32_t ToolServiceConcurrentClient::send_getSnowFlake(const SnowFlakeRequest& req)
+int32_t ToolLogisticConcurrentClient::send_getSnowFlake(const SnowFlakeRequest& req)
 {
   int32_t cseqid = this->sync_->generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(this->sync_.get());
   oprot_->writeMessageBegin("getSnowFlake", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  ToolService_getSnowFlake_pargs args;
+  ToolLogistic_getSnowFlake_pargs args;
   args.req = &req;
   args.write(oprot_);
 
@@ -740,7 +740,7 @@ int32_t ToolServiceConcurrentClient::send_getSnowFlake(const SnowFlakeRequest& r
   return cseqid;
 }
 
-void ToolServiceConcurrentClient::recv_getSnowFlake(SnowFlakeResponse& _return, const int32_t seqid)
+void ToolLogisticConcurrentClient::recv_getSnowFlake(SnowFlakeResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -778,7 +778,7 @@ void ToolServiceConcurrentClient::recv_getSnowFlake(SnowFlakeResponse& _return, 
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      ToolService_getSnowFlake_presult result;
+      ToolLogistic_getSnowFlake_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();

@@ -4,13 +4,13 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef ToolService_H
-#define ToolService_H
+#ifndef ToolLogistic_H
+#define ToolLogistic_H
 
 #include <thrift/TDispatchProcessor.h>
 #include <thrift/async/TConcurrentClientSyncInfo.h>
 #include <memory>
-#include "tool_types.h"
+#include "tool_logistic_types.h"
 
 namespace KieShop { namespace tool {
 
@@ -19,40 +19,40 @@ namespace KieShop { namespace tool {
   #pragma warning (disable : 4250 ) //inheriting methods via dominance 
 #endif
 
-class ToolServiceIf {
+class ToolLogisticIf {
  public:
-  virtual ~ToolServiceIf() {}
+  virtual ~ToolLogisticIf() {}
   virtual void getShardingKey(ShardingKeyResponse& _return, const ShardingKeyRequest& req) = 0;
   virtual void getSnowFlake(SnowFlakeResponse& _return, const SnowFlakeRequest& req) = 0;
 };
 
-class ToolServiceIfFactory {
+class ToolLogisticIfFactory {
  public:
-  typedef ToolServiceIf Handler;
+  typedef ToolLogisticIf Handler;
 
-  virtual ~ToolServiceIfFactory() {}
+  virtual ~ToolLogisticIfFactory() {}
 
-  virtual ToolServiceIf* getHandler(const ::apache::thrift::TConnectionInfo& connInfo) = 0;
-  virtual void releaseHandler(ToolServiceIf* /* handler */) = 0;
+  virtual ToolLogisticIf* getHandler(const ::apache::thrift::TConnectionInfo& connInfo) = 0;
+  virtual void releaseHandler(ToolLogisticIf* /* handler */) = 0;
 };
 
-class ToolServiceIfSingletonFactory : virtual public ToolServiceIfFactory {
+class ToolLogisticIfSingletonFactory : virtual public ToolLogisticIfFactory {
  public:
-  ToolServiceIfSingletonFactory(const ::std::shared_ptr<ToolServiceIf>& iface) : iface_(iface) {}
-  virtual ~ToolServiceIfSingletonFactory() {}
+  ToolLogisticIfSingletonFactory(const ::std::shared_ptr<ToolLogisticIf>& iface) : iface_(iface) {}
+  virtual ~ToolLogisticIfSingletonFactory() {}
 
-  virtual ToolServiceIf* getHandler(const ::apache::thrift::TConnectionInfo&) {
+  virtual ToolLogisticIf* getHandler(const ::apache::thrift::TConnectionInfo&) {
     return iface_.get();
   }
-  virtual void releaseHandler(ToolServiceIf* /* handler */) {}
+  virtual void releaseHandler(ToolLogisticIf* /* handler */) {}
 
  protected:
-  ::std::shared_ptr<ToolServiceIf> iface_;
+  ::std::shared_ptr<ToolLogisticIf> iface_;
 };
 
-class ToolServiceNull : virtual public ToolServiceIf {
+class ToolLogisticNull : virtual public ToolLogisticIf {
  public:
-  virtual ~ToolServiceNull() {}
+  virtual ~ToolLogisticNull() {}
   void getShardingKey(ShardingKeyResponse& /* _return */, const ShardingKeyRequest& /* req */) {
     return;
   }
@@ -61,37 +61,37 @@ class ToolServiceNull : virtual public ToolServiceIf {
   }
 };
 
-typedef struct _ToolService_getShardingKey_args__isset {
-  _ToolService_getShardingKey_args__isset() : req(false) {}
+typedef struct _ToolLogistic_getShardingKey_args__isset {
+  _ToolLogistic_getShardingKey_args__isset() : req(false) {}
   bool req :1;
-} _ToolService_getShardingKey_args__isset;
+} _ToolLogistic_getShardingKey_args__isset;
 
-class ToolService_getShardingKey_args {
+class ToolLogistic_getShardingKey_args {
  public:
 
-  ToolService_getShardingKey_args(const ToolService_getShardingKey_args&);
-  ToolService_getShardingKey_args& operator=(const ToolService_getShardingKey_args&);
-  ToolService_getShardingKey_args() {
+  ToolLogistic_getShardingKey_args(const ToolLogistic_getShardingKey_args&);
+  ToolLogistic_getShardingKey_args& operator=(const ToolLogistic_getShardingKey_args&);
+  ToolLogistic_getShardingKey_args() {
   }
 
-  virtual ~ToolService_getShardingKey_args() noexcept;
+  virtual ~ToolLogistic_getShardingKey_args() noexcept;
   ShardingKeyRequest req;
 
-  _ToolService_getShardingKey_args__isset __isset;
+  _ToolLogistic_getShardingKey_args__isset __isset;
 
   void __set_req(const ShardingKeyRequest& val);
 
-  bool operator == (const ToolService_getShardingKey_args & rhs) const
+  bool operator == (const ToolLogistic_getShardingKey_args & rhs) const
   {
     if (!(req == rhs.req))
       return false;
     return true;
   }
-  bool operator != (const ToolService_getShardingKey_args &rhs) const {
+  bool operator != (const ToolLogistic_getShardingKey_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ToolService_getShardingKey_args & ) const;
+  bool operator < (const ToolLogistic_getShardingKey_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -99,103 +99,103 @@ class ToolService_getShardingKey_args {
 };
 
 
-class ToolService_getShardingKey_pargs {
+class ToolLogistic_getShardingKey_pargs {
  public:
 
 
-  virtual ~ToolService_getShardingKey_pargs() noexcept;
+  virtual ~ToolLogistic_getShardingKey_pargs() noexcept;
   const ShardingKeyRequest* req;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _ToolService_getShardingKey_result__isset {
-  _ToolService_getShardingKey_result__isset() : success(false) {}
+typedef struct _ToolLogistic_getShardingKey_result__isset {
+  _ToolLogistic_getShardingKey_result__isset() : success(false) {}
   bool success :1;
-} _ToolService_getShardingKey_result__isset;
+} _ToolLogistic_getShardingKey_result__isset;
 
-class ToolService_getShardingKey_result {
+class ToolLogistic_getShardingKey_result {
  public:
 
-  ToolService_getShardingKey_result(const ToolService_getShardingKey_result&);
-  ToolService_getShardingKey_result& operator=(const ToolService_getShardingKey_result&);
-  ToolService_getShardingKey_result() {
+  ToolLogistic_getShardingKey_result(const ToolLogistic_getShardingKey_result&);
+  ToolLogistic_getShardingKey_result& operator=(const ToolLogistic_getShardingKey_result&);
+  ToolLogistic_getShardingKey_result() {
   }
 
-  virtual ~ToolService_getShardingKey_result() noexcept;
+  virtual ~ToolLogistic_getShardingKey_result() noexcept;
   ShardingKeyResponse success;
 
-  _ToolService_getShardingKey_result__isset __isset;
+  _ToolLogistic_getShardingKey_result__isset __isset;
 
   void __set_success(const ShardingKeyResponse& val);
 
-  bool operator == (const ToolService_getShardingKey_result & rhs) const
+  bool operator == (const ToolLogistic_getShardingKey_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
     return true;
   }
-  bool operator != (const ToolService_getShardingKey_result &rhs) const {
+  bool operator != (const ToolLogistic_getShardingKey_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ToolService_getShardingKey_result & ) const;
+  bool operator < (const ToolLogistic_getShardingKey_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _ToolService_getShardingKey_presult__isset {
-  _ToolService_getShardingKey_presult__isset() : success(false) {}
+typedef struct _ToolLogistic_getShardingKey_presult__isset {
+  _ToolLogistic_getShardingKey_presult__isset() : success(false) {}
   bool success :1;
-} _ToolService_getShardingKey_presult__isset;
+} _ToolLogistic_getShardingKey_presult__isset;
 
-class ToolService_getShardingKey_presult {
+class ToolLogistic_getShardingKey_presult {
  public:
 
 
-  virtual ~ToolService_getShardingKey_presult() noexcept;
+  virtual ~ToolLogistic_getShardingKey_presult() noexcept;
   ShardingKeyResponse* success;
 
-  _ToolService_getShardingKey_presult__isset __isset;
+  _ToolLogistic_getShardingKey_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _ToolService_getSnowFlake_args__isset {
-  _ToolService_getSnowFlake_args__isset() : req(false) {}
+typedef struct _ToolLogistic_getSnowFlake_args__isset {
+  _ToolLogistic_getSnowFlake_args__isset() : req(false) {}
   bool req :1;
-} _ToolService_getSnowFlake_args__isset;
+} _ToolLogistic_getSnowFlake_args__isset;
 
-class ToolService_getSnowFlake_args {
+class ToolLogistic_getSnowFlake_args {
  public:
 
-  ToolService_getSnowFlake_args(const ToolService_getSnowFlake_args&);
-  ToolService_getSnowFlake_args& operator=(const ToolService_getSnowFlake_args&);
-  ToolService_getSnowFlake_args() {
+  ToolLogistic_getSnowFlake_args(const ToolLogistic_getSnowFlake_args&);
+  ToolLogistic_getSnowFlake_args& operator=(const ToolLogistic_getSnowFlake_args&);
+  ToolLogistic_getSnowFlake_args() {
   }
 
-  virtual ~ToolService_getSnowFlake_args() noexcept;
+  virtual ~ToolLogistic_getSnowFlake_args() noexcept;
   SnowFlakeRequest req;
 
-  _ToolService_getSnowFlake_args__isset __isset;
+  _ToolLogistic_getSnowFlake_args__isset __isset;
 
   void __set_req(const SnowFlakeRequest& val);
 
-  bool operator == (const ToolService_getSnowFlake_args & rhs) const
+  bool operator == (const ToolLogistic_getSnowFlake_args & rhs) const
   {
     if (!(req == rhs.req))
       return false;
     return true;
   }
-  bool operator != (const ToolService_getSnowFlake_args &rhs) const {
+  bool operator != (const ToolLogistic_getSnowFlake_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ToolService_getSnowFlake_args & ) const;
+  bool operator < (const ToolLogistic_getSnowFlake_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -203,78 +203,78 @@ class ToolService_getSnowFlake_args {
 };
 
 
-class ToolService_getSnowFlake_pargs {
+class ToolLogistic_getSnowFlake_pargs {
  public:
 
 
-  virtual ~ToolService_getSnowFlake_pargs() noexcept;
+  virtual ~ToolLogistic_getSnowFlake_pargs() noexcept;
   const SnowFlakeRequest* req;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _ToolService_getSnowFlake_result__isset {
-  _ToolService_getSnowFlake_result__isset() : success(false) {}
+typedef struct _ToolLogistic_getSnowFlake_result__isset {
+  _ToolLogistic_getSnowFlake_result__isset() : success(false) {}
   bool success :1;
-} _ToolService_getSnowFlake_result__isset;
+} _ToolLogistic_getSnowFlake_result__isset;
 
-class ToolService_getSnowFlake_result {
+class ToolLogistic_getSnowFlake_result {
  public:
 
-  ToolService_getSnowFlake_result(const ToolService_getSnowFlake_result&);
-  ToolService_getSnowFlake_result& operator=(const ToolService_getSnowFlake_result&);
-  ToolService_getSnowFlake_result() {
+  ToolLogistic_getSnowFlake_result(const ToolLogistic_getSnowFlake_result&);
+  ToolLogistic_getSnowFlake_result& operator=(const ToolLogistic_getSnowFlake_result&);
+  ToolLogistic_getSnowFlake_result() {
   }
 
-  virtual ~ToolService_getSnowFlake_result() noexcept;
+  virtual ~ToolLogistic_getSnowFlake_result() noexcept;
   SnowFlakeResponse success;
 
-  _ToolService_getSnowFlake_result__isset __isset;
+  _ToolLogistic_getSnowFlake_result__isset __isset;
 
   void __set_success(const SnowFlakeResponse& val);
 
-  bool operator == (const ToolService_getSnowFlake_result & rhs) const
+  bool operator == (const ToolLogistic_getSnowFlake_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
     return true;
   }
-  bool operator != (const ToolService_getSnowFlake_result &rhs) const {
+  bool operator != (const ToolLogistic_getSnowFlake_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ToolService_getSnowFlake_result & ) const;
+  bool operator < (const ToolLogistic_getSnowFlake_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _ToolService_getSnowFlake_presult__isset {
-  _ToolService_getSnowFlake_presult__isset() : success(false) {}
+typedef struct _ToolLogistic_getSnowFlake_presult__isset {
+  _ToolLogistic_getSnowFlake_presult__isset() : success(false) {}
   bool success :1;
-} _ToolService_getSnowFlake_presult__isset;
+} _ToolLogistic_getSnowFlake_presult__isset;
 
-class ToolService_getSnowFlake_presult {
+class ToolLogistic_getSnowFlake_presult {
  public:
 
 
-  virtual ~ToolService_getSnowFlake_presult() noexcept;
+  virtual ~ToolLogistic_getSnowFlake_presult() noexcept;
   SnowFlakeResponse* success;
 
-  _ToolService_getSnowFlake_presult__isset __isset;
+  _ToolLogistic_getSnowFlake_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-class ToolServiceClient : virtual public ToolServiceIf {
+class ToolLogisticClient : virtual public ToolLogisticIf {
  public:
-  ToolServiceClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
+  ToolLogisticClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
     setProtocol(prot);
   }
-  ToolServiceClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, std::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
+  ToolLogisticClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, std::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
     setProtocol(iprot,oprot);
   }
  private:
@@ -307,46 +307,46 @@ class ToolServiceClient : virtual public ToolServiceIf {
   ::apache::thrift::protocol::TProtocol* oprot_;
 };
 
-class ToolServiceProcessor : public ::apache::thrift::TDispatchProcessor {
+class ToolLogisticProcessor : public ::apache::thrift::TDispatchProcessor {
  protected:
-  ::std::shared_ptr<ToolServiceIf> iface_;
+  ::std::shared_ptr<ToolLogisticIf> iface_;
   virtual bool dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext);
  private:
-  typedef  void (ToolServiceProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
+  typedef  void (ToolLogisticProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
   void process_getShardingKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getSnowFlake(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
-  ToolServiceProcessor(::std::shared_ptr<ToolServiceIf> iface) :
+  ToolLogisticProcessor(::std::shared_ptr<ToolLogisticIf> iface) :
     iface_(iface) {
-    processMap_["getShardingKey"] = &ToolServiceProcessor::process_getShardingKey;
-    processMap_["getSnowFlake"] = &ToolServiceProcessor::process_getSnowFlake;
+    processMap_["getShardingKey"] = &ToolLogisticProcessor::process_getShardingKey;
+    processMap_["getSnowFlake"] = &ToolLogisticProcessor::process_getSnowFlake;
   }
 
-  virtual ~ToolServiceProcessor() {}
+  virtual ~ToolLogisticProcessor() {}
 };
 
-class ToolServiceProcessorFactory : public ::apache::thrift::TProcessorFactory {
+class ToolLogisticProcessorFactory : public ::apache::thrift::TProcessorFactory {
  public:
-  ToolServiceProcessorFactory(const ::std::shared_ptr< ToolServiceIfFactory >& handlerFactory) :
+  ToolLogisticProcessorFactory(const ::std::shared_ptr< ToolLogisticIfFactory >& handlerFactory) :
       handlerFactory_(handlerFactory) {}
 
   ::std::shared_ptr< ::apache::thrift::TProcessor > getProcessor(const ::apache::thrift::TConnectionInfo& connInfo);
 
  protected:
-  ::std::shared_ptr< ToolServiceIfFactory > handlerFactory_;
+  ::std::shared_ptr< ToolLogisticIfFactory > handlerFactory_;
 };
 
-class ToolServiceMultiface : virtual public ToolServiceIf {
+class ToolLogisticMultiface : virtual public ToolLogisticIf {
  public:
-  ToolServiceMultiface(std::vector<std::shared_ptr<ToolServiceIf> >& ifaces) : ifaces_(ifaces) {
+  ToolLogisticMultiface(std::vector<std::shared_ptr<ToolLogisticIf> >& ifaces) : ifaces_(ifaces) {
   }
-  virtual ~ToolServiceMultiface() {}
+  virtual ~ToolLogisticMultiface() {}
  protected:
-  std::vector<std::shared_ptr<ToolServiceIf> > ifaces_;
-  ToolServiceMultiface() {}
-  void add(::std::shared_ptr<ToolServiceIf> iface) {
+  std::vector<std::shared_ptr<ToolLogisticIf> > ifaces_;
+  ToolLogisticMultiface() {}
+  void add(::std::shared_ptr<ToolLogisticIf> iface) {
     ifaces_.push_back(iface);
   }
  public:
@@ -375,13 +375,13 @@ class ToolServiceMultiface : virtual public ToolServiceIf {
 // The 'concurrent' client is a thread safe client that correctly handles
 // out of order responses.  It is slower than the regular client, so should
 // only be used when you need to share a connection among multiple threads
-class ToolServiceConcurrentClient : virtual public ToolServiceIf {
+class ToolLogisticConcurrentClient : virtual public ToolLogisticIf {
  public:
-  ToolServiceConcurrentClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> prot, std::shared_ptr<::apache::thrift::async::TConcurrentClientSyncInfo> sync) : sync_(sync)
+  ToolLogisticConcurrentClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> prot, std::shared_ptr<::apache::thrift::async::TConcurrentClientSyncInfo> sync) : sync_(sync)
 {
     setProtocol(prot);
   }
-  ToolServiceConcurrentClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, std::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot, std::shared_ptr<::apache::thrift::async::TConcurrentClientSyncInfo> sync) : sync_(sync)
+  ToolLogisticConcurrentClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, std::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot, std::shared_ptr<::apache::thrift::async::TConcurrentClientSyncInfo> sync) : sync_(sync)
 {
     setProtocol(iprot,oprot);
   }

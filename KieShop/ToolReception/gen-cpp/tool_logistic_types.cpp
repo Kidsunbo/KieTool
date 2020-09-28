@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#include "tool_types.h"
+#include "tool_logistic_types.h"
 
 #include <algorithm>
 #include <ostream>

@@ -26,8 +26,8 @@ namespace handler {
             request.id = id;
 
             {
-                std::lock_guard<std::mutex> lock(toolServiceMutex);
-                toolServiceClient.getShardingKey(response, request);
+                std::lock_guard<std::mutex> lock(toolLogisticMutex);
+                toolLogisticClient.getShardingKey(response, request);
             }
             dto::ShardingKey sk;
             if (response.baseResp.statusCode == base::StatusCode::Fail) {
@@ -57,8 +57,8 @@ namespace handler {
             util::wrapBase(request.base);
 
             {
-                std::lock_guard<std::mutex> lock(toolServiceMutex);
-                toolServiceClient.getSnowFlake(response, request);
+                std::lock_guard<std::mutex> lock(toolLogisticMutex);
+                toolLogisticClient.getSnowFlake(response, request);
             }
             dto::SnowFlake sf;
             if (response.baseResp.statusCode == base::StatusCode::Fail) {

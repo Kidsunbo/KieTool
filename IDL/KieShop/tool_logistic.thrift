@@ -42,7 +42,7 @@ struct SnowFlakeResponse{
 }
 /**********************End Snow Flake********************/
 
-service ToolService{
+service ToolLogistic{
    ShardingKeyResponse getShardingKey(1: ShardingKeyRequest req)
    SnowFlakeResponse getSnowFlake(1: SnowFlakeRequest req)
 }

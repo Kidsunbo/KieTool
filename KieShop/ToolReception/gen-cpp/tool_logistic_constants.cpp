@@ -4,21 +4,14 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef tool_CONSTANTS_H
-#define tool_CONSTANTS_H
-
-#include "tool_types.h"
+#include "tool_logistic_constants.h"
 
 namespace KieShop { namespace tool {
 
-class toolConstants {
- public:
-  toolConstants();
+const tool_logisticConstants g_tool_logistic_constants;
 
-};
-
-extern const toolConstants g_tool_constants;
+tool_logisticConstants::tool_logisticConstants() {
+}
 
 }} // namespace
 
-#endif
