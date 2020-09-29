@@ -14,10 +14,11 @@ int writeToTToolAccess(const std::string& logID,const std::string& ip,int port,c
 
             throw std::runtime_error("database does not exist");
         }
-        auto res = ToolBasic::getInstance().getTable("t_tool_access").insert("log_id", "ip_v4", "port_num", "request_body",
-                                                                             "response_body").values(
-                logID, ip, port, request, response
-        ).execute();
+        //It will be easy when C++23 comes out, because of reflection
+        auto res = ToolBasic::getInstance().getTable("t_tool_access")
+                .insert("log_id", "ip_v4", "port_num", "request_body","response_body")
+                .values(logID, ip, port, request, response)
+                .execute();
         return res.getAffectedItemsCount();
     } catch (std::exception& e) {
         SPDLOG_ERROR("logID={} func={} err={}",logID,__FUNCTION__,e.what());
