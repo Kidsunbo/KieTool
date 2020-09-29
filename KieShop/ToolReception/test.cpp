@@ -9,7 +9,5 @@
 
 
 int main() {
-    while (true) {
-        std::cout << util::getIp() << std::endl;
-    }
+    std::cout << "Hello Test" << std::endl;
 }

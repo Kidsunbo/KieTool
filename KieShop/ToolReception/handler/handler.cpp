@@ -20,9 +20,9 @@ namespace handler {
                 throw std::logic_error("The id is empty");
             }
 
-            KieShop::tool::ShardingKeyResponse response;
-            KieShop::tool::ShardingKeyRequest request;
-            util::wrapBase(request.base);
+            KieShop::tool_logistic::ShardingKeyResponse response;
+            KieShop::tool_logistic::ShardingKeyRequest request;
+            util::wrapBase(request.base,req);
             request.id = id;
 
             {
@@ -52,9 +52,9 @@ namespace handler {
         try {
             SPDLOG_INFO("request from ip={}", util::getClientIp(req));
 
-            KieShop::tool::SnowFlakeResponse response;
-            KieShop::tool::SnowFlakeRequest request;
-            util::wrapBase(request.base);
+            KieShop::tool_logistic::SnowFlakeResponse response;
+            KieShop::tool_logistic::SnowFlakeRequest request;
+            util::wrapBase(request.base,req);
 
             {
                 std::lock_guard<std::mutex> lock(toolLogisticMutex);

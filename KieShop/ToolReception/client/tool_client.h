@@ -10,7 +10,7 @@
 #include "../gen-cpp/ToolLogistic.h"
 #include <mutex>
 
-extern KieShop::tool::ToolLogisticClient toolLogisticClient;
+extern KieShop::tool_logistic::ToolLogisticClient toolLogisticClient;
 extern std::mutex toolLogisticMutex;
 
 #endif //TOOLRECEPTION_TOOL_CLIENT_H

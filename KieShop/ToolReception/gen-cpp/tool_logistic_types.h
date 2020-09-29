@@ -20,7 +20,7 @@
 #include "base_types.h"
 
 
-namespace KieShop { namespace tool {
+namespace KieShop { namespace tool_logistic {
 
 class ShardingKeyRequest;
 

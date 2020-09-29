@@ -6,7 +6,7 @@
  */
 #include "tool_logistic_constants.h"
 
-namespace KieShop { namespace tool {
+namespace KieShop { namespace tool_logistic {
 
 const tool_logisticConstants g_tool_logistic_constants;
 

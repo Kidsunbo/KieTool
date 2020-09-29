@@ -16,15 +16,15 @@ using namespace apache::thrift::transport;
 /**
  * bad practice, just for fun
  */
-KieShop::tool::ToolLogisticClient toolLogisticClient(nullptr);
+KieShop::tool_logistic::ToolLogisticClient toolLogisticClient(nullptr);
 std::mutex toolLogisticMutex;
 
 static void init(){
-    std::shared_ptr<TTransport> socket(new TSocket("localhost", 9090));
+    std::shared_ptr<TTransport> socket(new TSocket("localhost", 9091));
     std::shared_ptr<TTransport> transport(new TBufferedTransport(socket));
     std::shared_ptr<TProtocol> protocol(new TBinaryProtocol(transport));
     transport->open();
-    toolLogisticClient = KieShop::tool::ToolLogisticClient(protocol);
+    toolLogisticClient = KieShop::tool_logistic::ToolLogisticClient(protocol);
 }
 
 static int _ = [](){

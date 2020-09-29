@@ -14,7 +14,7 @@
 
 
 namespace util {
-    void wrapBase(base::Base& b);
+    void wrapBase(base::Base& b,cinatra::request& req);
 
     bool wrapError(dto::Serialization& s,nlohmann::json& j);
 

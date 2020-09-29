@@ -6,7 +6,7 @@
  */
 #include "ToolLogistic.h"
 
-namespace KieShop { namespace tool {
+namespace KieShop { namespace tool_logistic {
 
 
 ToolLogistic_getShardingKey_args::~ToolLogistic_getShardingKey_args() noexcept {
