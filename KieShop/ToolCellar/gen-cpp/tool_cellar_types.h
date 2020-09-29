@@ -27,10 +27,7 @@ class RequestLoggingRequest;
 class RequestLoggingResponse;
 
 typedef struct _RequestLoggingRequest__isset {
-  _RequestLoggingRequest__isset() : ipV4(false), portNum(false), requestTime(false), requestBody(false), responseBody(false), base(false) {}
-  bool ipV4 :1;
-  bool portNum :1;
-  bool requestTime :1;
+  _RequestLoggingRequest__isset() : requestBody(false), responseBody(false), base(false) {}
   bool requestBody :1;
   bool responseBody :1;
   bool base :1;
@@ -41,24 +38,15 @@ class RequestLoggingRequest : public virtual ::apache::thrift::TBase {
 
   RequestLoggingRequest(const RequestLoggingRequest&);
   RequestLoggingRequest& operator=(const RequestLoggingRequest&);
-  RequestLoggingRequest() : ipV4(), portNum(0), requestTime(0), requestBody(), responseBody() {
+  RequestLoggingRequest() : requestBody(), responseBody() {
   }
 
   virtual ~RequestLoggingRequest() noexcept;
-  std::string ipV4;
-  int16_t portNum;
-  int64_t requestTime;
   std::string requestBody;
   std::string responseBody;
    ::base::Base base;
 
   _RequestLoggingRequest__isset __isset;
-
-  void __set_ipV4(const std::string& val);
-
-  void __set_portNum(const int16_t val);
-
-  void __set_requestTime(const int64_t val);
 
   void __set_requestBody(const std::string& val);
 
@@ -68,12 +56,6 @@ class RequestLoggingRequest : public virtual ::apache::thrift::TBase {
 
   bool operator == (const RequestLoggingRequest & rhs) const
   {
-    if (!(ipV4 == rhs.ipV4))
-      return false;
-    if (!(portNum == rhs.portNum))
-      return false;
-    if (!(requestTime == rhs.requestTime))
-      return false;
     if (!(requestBody == rhs.requestBody))
       return false;
     if (!(responseBody == rhs.responseBody))

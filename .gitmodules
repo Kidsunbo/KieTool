@@ -13,3 +13,9 @@
 [submodule "KieShop/ToolLogistic/lib/spdlog"]
 	path = KieShop/ToolLogistic/lib/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "KieShop/ToolCellar/lib/KieToolCommon"]
+	path = KieShop/ToolCellar/lib/KieToolCommon
+	url = https://github.com/Kidsunbo/KieToolCommon.git
+[submodule "KieShop/ToolLogistic/lib/KieToolCommon"]
+	path = KieShop/ToolLogistic/lib/KieToolCommon
+	url = https://github.com/Kidsunbo/KieToolCommon.git

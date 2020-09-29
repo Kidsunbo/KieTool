@@ -1,6 +1,7 @@
 #include <iostream>
 #include "handler.h"
 #include "defined/constant.h"
+#include "database/tool_basic.h"
 
 void runServer(){
 
@@ -28,6 +29,7 @@ void runServer(){
 }
 
 int main() {
+    ToolBasic::getInstance(); //init database
 
     runServer();
     return 0;

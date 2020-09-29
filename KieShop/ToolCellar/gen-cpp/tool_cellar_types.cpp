@@ -18,18 +18,6 @@ RequestLoggingRequest::~RequestLoggingRequest() noexcept {
 }
 
 
-void RequestLoggingRequest::__set_ipV4(const std::string& val) {
-  this->ipV4 = val;
-}
-
-void RequestLoggingRequest::__set_portNum(const int16_t val) {
-  this->portNum = val;
-}
-
-void RequestLoggingRequest::__set_requestTime(const int64_t val) {
-  this->requestTime = val;
-}
-
 void RequestLoggingRequest::__set_requestBody(const std::string& val) {
   this->requestBody = val;
 }
@@ -71,37 +59,13 @@ uint32_t RequestLoggingRequest::read(::apache::thrift::protocol::TProtocol* ipro
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->ipV4);
-          this->__isset.ipV4 = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_I16) {
-          xfer += iprot->readI16(this->portNum);
-          this->__isset.portNum = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_I64) {
-          xfer += iprot->readI64(this->requestTime);
-          this->__isset.requestTime = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readString(this->requestBody);
           this->__isset.requestBody = true;
         } else {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 5:
+      case 2:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readString(this->responseBody);
           this->__isset.responseBody = true;
@@ -134,23 +98,11 @@ uint32_t RequestLoggingRequest::write(::apache::thrift::protocol::TProtocol* opr
   ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("RequestLoggingRequest");
 
-  xfer += oprot->writeFieldBegin("ipV4", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->ipV4);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("portNum", ::apache::thrift::protocol::T_I16, 2);
-  xfer += oprot->writeI16(this->portNum);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("requestTime", ::apache::thrift::protocol::T_I64, 3);
-  xfer += oprot->writeI64(this->requestTime);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("requestBody", ::apache::thrift::protocol::T_STRING, 4);
+  xfer += oprot->writeFieldBegin("requestBody", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString(this->requestBody);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("responseBody", ::apache::thrift::protocol::T_STRING, 5);
+  xfer += oprot->writeFieldBegin("responseBody", ::apache::thrift::protocol::T_STRING, 2);
   xfer += oprot->writeString(this->responseBody);
   xfer += oprot->writeFieldEnd();
 
@@ -165,9 +117,6 @@ uint32_t RequestLoggingRequest::write(::apache::thrift::protocol::TProtocol* opr
 
 void swap(RequestLoggingRequest &a, RequestLoggingRequest &b) {
   using ::std::swap;
-  swap(a.ipV4, b.ipV4);
-  swap(a.portNum, b.portNum);
-  swap(a.requestTime, b.requestTime);
   swap(a.requestBody, b.requestBody);
   swap(a.responseBody, b.responseBody);
   swap(a.base, b.base);
@@ -175,18 +124,12 @@ void swap(RequestLoggingRequest &a, RequestLoggingRequest &b) {
 }
 
 RequestLoggingRequest::RequestLoggingRequest(const RequestLoggingRequest& other0) {
-  ipV4 = other0.ipV4;
-  portNum = other0.portNum;
-  requestTime = other0.requestTime;
   requestBody = other0.requestBody;
   responseBody = other0.responseBody;
   base = other0.base;
   __isset = other0.__isset;
 }
 RequestLoggingRequest& RequestLoggingRequest::operator=(const RequestLoggingRequest& other1) {
-  ipV4 = other1.ipV4;
-  portNum = other1.portNum;
-  requestTime = other1.requestTime;
   requestBody = other1.requestBody;
   responseBody = other1.responseBody;
   base = other1.base;
@@ -196,10 +139,7 @@ RequestLoggingRequest& RequestLoggingRequest::operator=(const RequestLoggingRequ
 void RequestLoggingRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "RequestLoggingRequest(";
-  out << "ipV4=" << to_string(ipV4);
-  out << ", " << "portNum=" << to_string(portNum);
-  out << ", " << "requestTime=" << to_string(requestTime);
-  out << ", " << "requestBody=" << to_string(requestBody);
+  out << "requestBody=" << to_string(requestBody);
   out << ", " << "responseBody=" << to_string(responseBody);
   out << ", " << "base=" << to_string(base);
   out << ")";
