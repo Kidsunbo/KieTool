@@ -9,13 +9,17 @@
 #include <spdlog/spdlog.h>
 #include <string_util.h>
 #include <cstdlib>
+#include "../util/async_record.h"
 
 #ifdef __linux__
 #include <cstring>
 #endif
 
-using namespace KieShop::tool;
+using namespace KieShop::tool_logistic;
 using namespace std;
+
+
+static ::async::AsyncRecorder* asyncRecorder = ::async::AsyncRecorder::getInstance();
 
 
 /*****************Sharding Key********************/
@@ -107,6 +111,8 @@ ShardingKeyResponse getShardingKey(const ShardingKeyRequest& sk) {
         o = parseUserId(id);
         resp.userId.shardingKey = o->shard_key;
 
+        asyncRecorder->push(sk,resp);
+
     } catch (std::out_of_range &e) {
         SPDLOG_INFO("logId={} func={} err={}", sk.base.logId, __FUNCTION__, e.what());
         resp.baseResp.statusCode = base::StatusCode::Fail;
@@ -135,7 +141,7 @@ static std::mutex lockSF;
 static unsigned int snowFlakeId = 0;
 static unsigned long long lastTimeStamp = 0;
 
-KieShop::tool::SnowFlakeResponse getSnowFlake(const KieShop::tool::SnowFlakeRequest& sk){
+SnowFlakeResponse getSnowFlake(const SnowFlakeRequest& sk){
     SPDLOG_INFO("logId={} func={} sk={}", sk.base.logId, __FUNCTION__, string_util::toString(sk));
     SnowFlakeResponse resp;
     auto current = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
@@ -165,6 +171,8 @@ KieShop::tool::SnowFlakeResponse getSnowFlake(const KieShop::tool::SnowFlakeRequ
     id |= static_cast<uint>(snowFlakeId&randomNumberMask);
 
     resp.id=id;
+
+    asyncRecorder->push(sk,resp);
     return resp;
 }
 /*****************End Snow Flake***********************/

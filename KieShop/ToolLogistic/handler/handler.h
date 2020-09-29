@@ -12,8 +12,8 @@
  * @param request The request body of the rpc function
  * @return The sharding key information
  */
-KieShop::tool::ShardingKeyResponse getShardingKey(const KieShop::tool::ShardingKeyRequest& request);
+KieShop::tool_logistic::ShardingKeyResponse getShardingKey(const KieShop::tool_logistic::ShardingKeyRequest& request);
 
-KieShop::tool::SnowFlakeResponse getSnowFlake(const KieShop::tool::SnowFlakeRequest& request);
+KieShop::tool_logistic::SnowFlakeResponse getSnowFlake(const KieShop::tool_logistic::SnowFlakeRequest& request);
 
 #endif //_KIE_SHOP_TOOL_LOGISTIC_HANDLER_H

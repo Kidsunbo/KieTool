@@ -1,12 +1,12 @@
 #include <memory>
 #include "handler.h"
-
+#include "client/client.h"
 #include "dto/value.h"
-
+#include "util/async_record.h"
 
 void runServer(){
 
-    int port = 9090;
+    int port = 9091;
     shared_ptr<ToolLogisticHandler> handler(new ToolLogisticHandler());
     shared_ptr<TProcessor> processor(new ToolLogisticProcessor(handler));
     shared_ptr<TProtocolFactory> protocolFactory(new TBinaryProtocolFactory());
@@ -30,5 +30,8 @@ void runServer(){
 }
 
 int main() {
+    initClient();
+    ::async::AsyncRecorder::getInstance()->start();
+
     runServer();
 }

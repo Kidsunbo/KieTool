@@ -15,4 +15,10 @@ struct OrderId{
     uint32 shard_key;
 };
 
+struct AsyncLog{
+    std::string req;
+    std::string resp;
+    base::Base base;
+};
+
 #endif //KIE_SHOP_TOOL_LOGISTIC_VALUE_H

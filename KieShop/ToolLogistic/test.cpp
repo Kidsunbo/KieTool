@@ -7,7 +7,7 @@
 
 int main(){
     for(;;) {
-        auto s = std::bitset<64>(getSnowFlake(KieShop::tool::SnowFlakeRequest()).id).to_string();
+        auto s = std::bitset<64>(getSnowFlake(KieShop::tool_logistic::SnowFlakeRequest()).id).to_string();
         if (s[1]=='1') {
             std::cout << s << std::endl;
         }

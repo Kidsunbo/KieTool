@@ -11,7 +11,7 @@
 
 #include <thrift/TToString.h>
 
-namespace KieShop { namespace tool {
+namespace KieShop { namespace tool_logistic {
 
 
 ShardingKeyRequest::~ShardingKeyRequest() noexcept {

@@ -25,7 +25,7 @@ using namespace ::apache::thrift::transport;
 using namespace ::apache::thrift::server;
 using namespace ::apache::thrift::concurrency;
 using namespace std;
-using namespace KieShop::tool;
+using namespace KieShop::tool_logistic;
 
 class ToolLogisticHandler: public ToolLogisticIf{
 public:

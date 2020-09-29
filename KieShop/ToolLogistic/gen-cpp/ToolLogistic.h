@@ -12,7 +12,7 @@
 #include <memory>
 #include "tool_logistic_types.h"
 
-namespace KieShop { namespace tool {
+namespace KieShop { namespace tool_logistic {
 
 #ifdef _MSC_VER
   #pragma warning( push )

@@ -22,7 +22,7 @@ FROM ubuntu:latest
 
 ENV MACHINE_ID=10 DATA_CENTER_ID=7
 
-WORKDIR /root/
+WORKDIR /root
 
 COPY --from=0 /root/bin/Tool/KieShop_tool_logistic .
 
