@@ -95,9 +95,13 @@ func (c *company)Push(allTasks []func()interface{})*tasks{
 			_task:  t,
 			_tasks: _ts,
 		}
-		c.pipeline <- _task
 		_ts._tasks = append(_ts._tasks,_task)
 	}
+	go func(){
+		for _, t := range _ts._tasks{
+			c.pipeline <- t
+		}
+	}()
 	return _ts
 }
 
